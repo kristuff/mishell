@@ -1,16 +1,9 @@
- Kristuff miShell 
 
-```
-           _   ____  _          _ _ 
- _ __ ___ (_) / ___|| |__   ___| | |
-| '_ ` _ \| | \___ \| '_ \ / _ \ | |
-| | | | | | |  ___) | | | |  __/ | |
-|_| |_| |_|_| |____/|_| |_|\___|_|_|
-
-```
 ![logo](doc/screenshots/loading.png)
 
 =================
+
+Kristuff miShell 
 
 A mini PHP CLI app builder
 
