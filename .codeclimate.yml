@@ -1,0 +1,10 @@
+engines:
+  phpmd:
+    enabled: true
+ratings:
+  paths:
+  - "**.php"
+exclude_paths:
+- "tests/"
+- "demo/"
+- "doc/"
