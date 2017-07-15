@@ -118,7 +118,7 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
     }
 
     /**
-     * Write a formated string in console and wait for an input.
+     * Writes a formatted string in the console then waits for a user input.
      *
      * @access public
      * @static method
@@ -127,7 +127,7 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
      * @param  string   [$bgcolor]              The back color for the wall line
      * @param  string   [$option]+...           The text styles for the wall line
      *
-     * @return string
+     * @return string|null
      */
     public static function ask()
     {
@@ -135,7 +135,7 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
     }
 
     /**
-     * Write a formated string in console and wait for an integer input.
+     * Write a formated string in the console and wait for an integer input.
      *
      * @access public
      * @static method
@@ -152,8 +152,14 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
     }
 
     /**
-     * Write a formated string in console and wait for an input.
+     * Writes a formatted string in the console then waits for a user input (returns but does not displays that user's input).
      *
+     * @param  string   [$str]                  The string to write
+     * @param  string   [$color]                The text color for the wall line
+     * @param  string   [$bgcolor]              The back color for the wall line
+     * @param  string   [$option]+...           The text styles for the wall line
+     *
+     * @return string|null
      */
     public static function askPassword()
     {
@@ -192,9 +198,18 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
     public static function relog()
     {
         self::cmd('relog',func_get_args());
-
     }  
 
+    /**
+     * Internal method dispatcher
+     *
+     * @access protected
+     * @static method
+     * @param  string   $command                The command name string
+     * @param  string   $args                   The command arguments
+     *
+     * @return mixed|void
+     */
     protected static function cmd($command, array $args)
     {
         // ouptut string is always the first argument (in any)
@@ -252,6 +267,16 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
         return null;
     }
       
+    /**
+     * Get a formated cli string to output in the console
+     *
+     * @access protected
+     * @static method
+     * @param  string   $str                    The text to output
+     * @param  string   $arguments              The command arguments
+     *
+     * @return mixed|void
+     */
     protected static function getCliString($str, array $arguments = [])
     {
         if (empty($arguments)){

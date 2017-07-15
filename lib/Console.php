@@ -24,13 +24,15 @@ namespace Kristuff\Mishell;
  
 class Console extends \Kristuff\Mishell\ColoredWriter 
 {
-
-   
+  
     public static $tableRowSeparator = '-';
     public static $tableColumnSeparator = '|';
 
     /**
      * Plays a bell sound in console (if available)
+     *
+     * @access public
+     * @static method
      *
      * @return void         
      */
@@ -46,7 +48,6 @@ class Console extends \Kristuff\Mishell\ColoredWriter
         self::$tableRowSeparator = '-';
         self::$tableColumnSeparator = '|';
     }
-
 
     /**
      *
@@ -64,6 +65,9 @@ class Console extends \Kristuff\Mishell\ColoredWriter
         return self::getCliString($str, $args);
     }
 
+    /**
+     *
+     */
     public static function tableRowEmpty()
     {
         $args = func_get_args();
@@ -76,6 +80,7 @@ class Console extends \Kristuff\Mishell\ColoredWriter
         }
         return self::getCliString($str, $args);
     }
+
     /**
      *
      */
