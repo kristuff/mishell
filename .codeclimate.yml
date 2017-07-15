@@ -1,0 +1,5 @@
+## EXCLUDE PATHS
+exclude_paths:
+- "tests/"
+- "demo/"
+- "doc/"

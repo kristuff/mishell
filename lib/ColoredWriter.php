@@ -233,13 +233,13 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
             // ****************************************
             
             case'write':
-                echo self::getCliString($str, $args);               // write text
+                echo (self::getCliString($str, $args));               // write text
                 break;
             case'log':
-                echo self::getCliString($str, $args) .self::$EOF;   // write text +newline
+                echo (self::getCliString($str, $args) .self::$EOF);   // write text +newline
                 break;
             case'relog':
-                echo self::getCliString($str ."\r", $args);         // overwrite current line 
+                echo (self::getCliString($str ."\r", $args));         // overwrite current line 
                 break;
 
             // ****************************************
@@ -247,18 +247,18 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
             // ****************************************
 
             case'ask':
-                echo self::getCliString($str, $args);       // write question
+                echo (self::getCliString($str, $args));       // write question
                 return trim(fgets(STDIN));                  // reads and return one line from STDIN 
            
             case'askPassword':
                 self::hideInput();                          // hide 
-                echo self::getCliString($str, $args);       // write question
+                echo (self::getCliString($str, $args));       // write question
                 $line= trim(fgets(STDIN));                  // reads one line from STDIN 
                 self::restoreInput();                       // restore 
                 return $line;                               // return line
                 
             case 'askInt':
-                echo self::getCliString($str, $args);       // write question
+                echo (self::getCliString($str, $args));       // write question
                 fscanf(STDIN, "%d\n", $number);             // reads number from STDIN
                 return (is_int($number) ? $number : false); // return int value or false
                 
