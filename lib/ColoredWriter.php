@@ -236,7 +236,7 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
                 echo (self::getCliString($str, $args));               // write text
                 break;
             case'log':
-                echo (self::getCliString($str, $args) .self::$EOF);   // write text +newline
+                echo (self::getCliString($str, $args) . self::$EOF );   // write text + newline
                 break;
             case'relog':
                 echo (self::getCliString($str ."\r", $args));         // overwrite current line 
@@ -312,4 +312,24 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
         $coloredString .=  $str . "\033[0m";
         return $coloredString;
     }
+
+    // TODO
+    protected function shellStrPad($input, $padLength, $padString = ' ', $padType = STR_PAD_RIGHT)
+    {
+        $diff = $padLength - strlen(escapeshellarg($input))  ; // ??-2 for escape chars not counted
+        if ($diff > 0){
+            switch ($padType){
+                case STR_PAD_RIGHT:
+                    return $input . str_repeat($padString, $diff);
+                case STR_PAD_LEFT:
+                    return str_repeat($padString, $diff) . $input;
+                case STR_PAD_BOTH:
+                    $padLeft = round($diff/2);
+                    return str_repeat($padString, $padLeft) . $input . str_repeat($padString, $diff - $padLeft);
+            }
+        }
+        return $input;
+    }
+
+
 }

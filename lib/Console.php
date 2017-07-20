@@ -24,9 +24,13 @@ namespace Kristuff\Mishell;
  
 class Console extends \Kristuff\Mishell\ColoredWriter 
 {
-  
+    protected static $TABLE_ROW_SEPARATOR = '-';
+    protected static $TABLE_COLUMN_SEPARATOR = '|';
+
     public static $tableRowSeparator = '-';
     public static $tableColumnSeparator = '|';
+
+
 
     /**
      * Plays a bell sound in console (if available)
@@ -45,8 +49,8 @@ class Console extends \Kristuff\Mishell\ColoredWriter
      */
     public static function tableResetDefaults()
     {
-        self::$tableRowSeparator = '-';
-        self::$tableColumnSeparator = '|';
+        self::$tableRowSeparator = self::$TABLE_ROW_SEPARATOR;
+        self::$tableColumnSeparator = self::$TABLE_COLUMN_SEPARATOR;
     }
 
     /**
@@ -90,10 +94,11 @@ class Console extends \Kristuff\Mishell\ColoredWriter
         $columns = !empty($args) ? $args[0] : [];
         array_shift($args);
 
-        $str = self::$tableColumnSeparator ;
+        $str = '';
         foreach ($columns as $column => $pad){
-            $str .= str_pad(' '. $column .' ', $pad) .self::$tableColumnSeparator ;
+            $str .= self::$tableColumnSeparator  .' '. self::shellStrPad($column, $pad) .' ' ;
         }
+        $str .= self::$tableColumnSeparator ;
         return self::getCliString($str, $args) ; 
     }
 }
