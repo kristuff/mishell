@@ -37,8 +37,8 @@ Install
 Usage
 --------
 
-| Method                           | Description                                                             | Return     |
-|----------------------------------|----------------------------------------------------------------- -------|------------|
+| Method                           | Description                                                             | Return       |
+|----------------------------------|-------------------------------------------------------------------------|--------------|
 | `Console::text($str, [styles])`  | Gets a formatted string to be returned in the console                   |  `string`    |
 | `Console::log($str, [styles])`   | Writes a formatted string in the console with new line                  |  `void`      |
 | `Console::reLog($str, [styles])` | Writes or overwites the curren line                                     |  `void`      |
