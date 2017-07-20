@@ -34,18 +34,23 @@ Install
 --------
 
 
-Usage
+Methods
 --------
 
-| Method                           | Description                                                             | Return       |
-|----------------------------------|-------------------------------------------------------------------------|--------------|
-| `Console::text($str, [styles])`  | Gets a formatted string to be returned in the console                   |  `string`    |
-| `Console::log($str, [styles])`   | Writes a formatted string in the console with new line                  |  `void`      |
-| `Console::reLog($str, [styles])` | Writes or overwites the curren line                                     |  `void`      |
-| `Console::ask($str, [styles])`   | Writes a formatted string in the console and waits for an input         |  `string`    |
-| `Console::askInt($str, [styles])`| Writes a formatted string in the console and waits for an int input     |  `int`/`bool`|
-
-
+-  `Console::text($str, [styles])`  
+    Gets a formatted string to be returned in the console 
+    Returns `string`
+-  `Console::log($str, [styles])`   
+    Writes a formatted string in the console with new line
+    Returns `void`
+-  `Console::reLog($str, [styles])`
+    Writes or overwites the curren line
+    Returns `void`
+-  `Console::ask($str, [styles])`   
+    Writes a formatted string in the console and waits for an input         
+    Returns `string`
+-  `Console::askInt($str, [styles])` Writes a formatted string in the console and waits for an int input     
+    Returns `int`|`bool`    
 
 
 
