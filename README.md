@@ -10,46 +10,75 @@ A mini PHP CLI app builder
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4fd3728ced2b4d95b0eb549db7a0053b)](https://www.codacy.com/app/kristuff_/mishell?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kristuff/patabase&amp;utm_campaign=Badge_Grade)
 [![Code Climate](https://codeclimate.com/github/kristuff/mishell/badges/gpa.svg)](https://codeclimate.com/github/kristuff/mishell)
 
-
-Website
--------
-
-[coming soon]() 
+[Features](Features) 
+[Requirements](Requirements) 
+[Install](Install) 
+[Documentation](Documentation) (extrenal file) 
+[License](License) 
 
 
 Features
 --------
-- Colorized shell writing methods
-- 
-- 
--  
+- Colorized shell writing methods:
+    - Basic or colored/stylized text
+    - Tables
+    - Progress message
+- Get user inputs
+    - standard (text) input
+    - password (hidden input)
+    - numeric values   
+- Open new/restore 'window' (no supported on Windows)
+- Run the bell
 
 Requirements
 ------------
-
 - PHP >= 5.6
-
 
 Install
 --------
+- Deploy with your project (in `composer.json`):
+```
+{
+    ...
+    "require": {
+        "kristuff/mishell": "0.*"
+    }
+}
+```
+
+- From command line:
+```bash
+composer require kristuff/mishell
+// or clone this project if wou want to play with the demo
+// git clone https://github.com/kristuff/mishell.git
+cd mishell
+composer install
+```
 
 
-Methods
+Documentation
 --------
+
+
 
 -  `Console::text($str, [styles])`  
     Gets a formatted string to be returned in the console 
+    
     Returns `string`
 -  `Console::log($str, [styles])`   
     Writes a formatted string in the console with new line
+    
     Returns `void`
 -  `Console::reLog($str, [styles])`
-    Writes or overwites the curren line
+    Writes or overwites the curren line.
+    
     Returns `void`
 -  `Console::ask($str, [styles])`   
-    Writes a formatted string in the console and waits for an input         
+    Writes a formatted string in the console and waits for an input.
+
     Returns `string`
--  `Console::askInt($str, [styles])` Writes a formatted string in the console and waits for an int input     
+-  `Console::askInt($str, [styles])` 
+    Writes a formatted string in the console and waits for an int input.
     Returns `int`|`bool`    
 
 

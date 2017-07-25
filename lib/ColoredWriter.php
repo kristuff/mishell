@@ -83,6 +83,119 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
         'reverse'      => '7', 
     );
 
+     /**
+     * Internal method dispatcher
+     *
+     * @access protected
+     * @static method
+     * @param  string   $command                The command name string
+     * @param  string   $args                   The command arguments
+     *
+     * @return mixed|void
+     */
+    protected static function cmd($command, array $args)
+    {
+        // ouptut string is always the first argument (in any)
+        $str = !empty($args) ? $args[0] : '';
+
+        // others (if any) are options
+        array_shift($args);
+
+        // 
+        switch($command){
+
+            // ****************************************
+            // Get methods (return string)
+            // ****************************************
+
+            case'text':
+                return self::getCliString($str, $args);             // get formated text
+            
+            // ****************************************
+            // Write methods (echo and return null)
+            // ****************************************
+            
+            case'write':
+                echo (self::getCliString($str, $args));               // write text
+                break;
+            case'log':
+                echo (self::getCliString($str, $args) . self::$EOF );   // write text + newline
+                break;
+            case'relog':
+                echo (self::getCliString($str ."\r", $args));         // overwrite current line 
+                break;
+
+            // ****************************************
+            // Write+Question methods (return someting)
+            // ****************************************
+
+            case'ask':
+                echo (self::getCliString($str, $args));       // write question
+                return trim(fgets(STDIN));                  // reads and return one line from STDIN 
+           
+            case'askPassword':
+                self::hideInput();                          // hide 
+                echo (self::getCliString($str, $args));       // write question
+                $line= trim(fgets(STDIN));                  // reads one line from STDIN 
+                self::restoreInput();                       // restore 
+                return $line;                               // return line
+                
+            case 'askInt':
+                echo (self::getCliString($str, $args));       // write question
+                fscanf(STDIN, "%d\n", $number);             // reads number from STDIN
+                return (is_int($number) ? $number : false); // return int value or false
+                
+
+        }
+        return null;
+    }
+      
+    /**
+     * Get a formated cli string to output in the console
+     *
+     * @access protected
+     * @static method
+     * @param  string   $str                    The text to output
+     * @param  string   $arguments              The command arguments
+     *
+     * @return mixed|void
+     */
+    protected static function getCliString($str, array $arguments = [])
+    {
+        if (empty($arguments)){
+            return $str;
+        }
+
+        $coloredString = "";
+        $hasColor = false;
+        $hasBackColor = false;
+        $cliArgs = [];
+        
+        // parse arguments
+        foreach ($arguments as $argument) {
+            
+            // it's a color?
+            if(!$hasColor && isset(self::$foregroundColors[$argument])){
+                $cliArgs[] = self::$foregroundColors[$argument];
+                $hasColor = true;
+
+            // it's a backcolor?
+            } elseif ($hasColor && !$hasBackColor && isset(self::$backgroundColors[$argument])){
+                $cliArgs[] = self::$backgroundColors[$argument];
+                $hasBackColor = true;
+
+            // or it's an option?
+            } elseif (isset(self::$options[$argument])){
+                $cliArgs[] = self::$options[$argument];
+            }
+        }
+
+        // Add string and end coloring
+        $coloredString .= "\033[" . implode(';',$cliArgs) .'m';
+        $coloredString .=  $str . "\033[0m";
+        return $coloredString;
+    }
+
     /**
      * Get a formated string to be returned in console.
      *
@@ -200,136 +313,38 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
         self::cmd('relog',func_get_args());
     }  
 
+   
     /**
-     * Internal method dispatcher
+     * A cli version of str_pad() that takes care of not printable ANSI chars
      *
      * @access protected
      * @static method
-     * @param  string   $command                The command name string
-     * @param  string   $args                   The command arguments
+     * @param  string   $input                  The input text
+     * @param  int      $padLenght              The pad length. Default is 0 (no pad)
+     * @param  string   $padString              The pad string. Default is blank char.
+     * @param  int      $padType                The pad type (STR_PAD_LEFT, STR_PAD_RIGHT or STR_PAD_BOTH). Default is STR_PAD_RIGHT.
      *
      * @return mixed|void
-     */
-    protected static function cmd($command, array $args)
+     */    
+    public function pad($input, $padLength, $padString = ' ', $padType = STR_PAD_RIGHT)
     {
-        // ouptut string is always the first argument (in any)
-        $str = !empty($args) ? $args[0] : '';
-
-        // others (if any) are options
-        array_shift($args);
-
-        // 
-        switch($command){
-
-            // ****************************************
-            // Get methods (return string)
-            // ****************************************
-
-            case'text':
-                return self::getCliString($str, $args);             // get formated text
-            
-            // ****************************************
-            // Write methods (echo and return null)
-            // ****************************************
-            
-            case'write':
-                echo (self::getCliString($str, $args));               // write text
-                break;
-            case'log':
-                echo (self::getCliString($str, $args) . self::$EOF );   // write text + newline
-                break;
-            case'relog':
-                echo (self::getCliString($str ."\r", $args));         // overwrite current line 
-                break;
-
-            // ****************************************
-            // Write+Question methods (return someting)
-            // ****************************************
-
-            case'ask':
-                echo (self::getCliString($str, $args));       // write question
-                return trim(fgets(STDIN));                  // reads and return one line from STDIN 
-           
-            case'askPassword':
-                self::hideInput();                          // hide 
-                echo (self::getCliString($str, $args));       // write question
-                $line= trim(fgets(STDIN));                  // reads one line from STDIN 
-                self::restoreInput();                       // restore 
-                return $line;                               // return line
-                
-            case 'askInt':
-                echo (self::getCliString($str, $args));       // write question
-                fscanf(STDIN, "%d\n", $number);             // reads number from STDIN
-                return (is_int($number) ? $number : false); // return int value or false
-                
-
-        }
-        return null;
-    }
-      
-    /**
-     * Get a formated cli string to output in the console
-     *
-     * @access protected
-     * @static method
-     * @param  string   $str                    The text to output
-     * @param  string   $arguments              The command arguments
-     *
-     * @return mixed|void
-     */
-    protected static function getCliString($str, array $arguments = [])
-    {
-        if (empty($arguments)){
-            return $str;
-        }
-
-        $coloredString = "";
-        $hasColor = false;
-        $hasBackColor = false;
-        $cliArgs = [];
+        $diff = $padLength - strlen(preg_replace('#\\033\[[[0-9;*]{1,}m#', '', $input));
         
-        // parse arguments
-        foreach ($arguments as $argument) {
-            
-            // it's a color?
-            if(!$hasColor && isset(self::$foregroundColors[$argument])){
-                $cliArgs[] = self::$foregroundColors[$argument];
-                $hasColor = true;
-
-            // it's a backcolor?
-            } elseif ($hasColor && !$hasBackColor && isset(self::$backgroundColors[$argument])){
-                $cliArgs[] = self::$backgroundColors[$argument];
-                $hasBackColor = true;
-
-            // or it's an option?
-            } elseif (isset(self::$options[$argument])){
-                $cliArgs[] = self::$options[$argument];
-            }
-        }
-
-        // Add string and end coloring
-        $coloredString .= "\033[" . implode(';',$cliArgs) .'m';
-        $coloredString .=  $str . "\033[0m";
-        return $coloredString;
-    }
-
-    // TODO
-    protected function shellStrPad($input, $padLength, $padString = ' ', $padType = STR_PAD_RIGHT)
-    {
-        $diff = $padLength - strlen(escapeshellarg($input))  ; // ??-2 for escape chars not counted
         if ($diff > 0){
             switch ($padType){
+                
                 case STR_PAD_RIGHT:
                     return $input . str_repeat($padString, $diff);
+                
                 case STR_PAD_LEFT:
-                    return str_repeat($padString, $diff) . $input;
+                    return str_repeat($padString, $diff ) . $input;
+                
                 case STR_PAD_BOTH:
-                    $padLeft = round($diff/2);
+                    $padLeft = round(($diff)/2);
                     return str_repeat($padString, $padLeft) . $input . str_repeat($padString, $diff - $padLeft);
             }
         }
         return $input;
     }
-
-
+    
 }

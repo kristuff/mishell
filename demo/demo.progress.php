@@ -1,6 +1,4 @@
 <?php
-// Output screenshot:
-// -------------------------------------------------------
 
 require_once __DIR__ .'/../vendor/autoload.php';
 use Kristuff\Mishell\Console;
