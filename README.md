@@ -110,30 +110,16 @@ Console::write('my string', 'blue', 'underline', 'none');             // Writes 
 ```
 ## 2. Api methods
 
--  `Console::text($str, [styles])`  
-    Gets a formatted string to be returned in the console. 
-    Returns `string`
--  `Console::write($str, [styles])` 
-    Writes a formatted string in the console. 
-    Returns `void`
--  `Console::log($str, [styles])` 
-    Writes a formatted string in the console with new line. 
-    Returns `void`
--  `Console::reLog($str, [styles])`
-    Writes or overwites the curren line. 
-    Returns `void`
--  `Console::ask($str, [styles])`   
-    Writes a formatted string in the console and waits for an input. Returns that input.
-    Returns `string`
--  `Console::askInt($str, [styles])` 
-    Writes a formatted string in the console and waits for an int input. 
-    Returns `int`|`bool`    
--  `Console::askPassword($str, [styles])`   
-    Writes a formatted string in the console and waits for an input. Returns but does not print user input. 
-    Returns `string`
--  `Console::bell()`   
-    Play the bell if available. 
-    Returns `void`
+Method | Description | Return
+--- | --- | ---
+`Console::text($str, [styles])`         | Gets a formatted string to be returned in the console. | `string`
+`Console::write($str, [styles])`        | Writes a formatted string in the console. | `void`
+`Console::log($str, [styles])`          | Writes a formatted string in the console with new line. | Returns `void`
+`Console::reLog($str, [styles])`        | Writes or overwites the curren line. | Returns `void`
+`Console::ask($str, [styles])`          | Writes a formatted string in the console and waits for an input. Returns that input. |Returns `string`
+`Console::askInt($str, [styles])`       | Writes a formatted string in the console and waits for an int input. | Returns `int|bool`    
+`Console::askPassword($str, [styles])`  | Writes a formatted string in the console and waits for an input. Returns but does not print user input. | Returns `string`
+`Console::bell()`                       | Play the bell if available. | Returns `void`
 
 [...] TODO 
 + switch window 
