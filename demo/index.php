@@ -86,8 +86,6 @@ function writeHeader()
     Console::log(' '.Console::text('   --- Interactive ~Mishell^^ Console sample ---   ', 'white', 'cyan', 'bold'));
     Console::log(' '.Console::text('                                                   ', 'white', 'cyan', 'bold', 'underline'));
     Console::log();
-    Console::log('my string', 'blue', 'underline', 'none');    // Writes a text with no style at all (note the 'none' argument...)
-
 }
 
 function writeIndex()
@@ -97,21 +95,21 @@ function writeIndex()
 
     // customize table separator
     // customize table row style (color, bg...)
-    Console::$tableColumnSeparator = '';
-    Console::$tableRowSeparator = ' ';
+    Console::$tableVerticalSeparator = '';
+    Console::$tableHorizontalSeparator = ' ';
 
     //Console::log(' '.Console::tableRowSeparator($rowHeaders, 'gray'));
 
-    Console::$tableRowSeparator = '_';
+    Console::$tableHorizontalSeparator = '_';
     Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'bold'));
 
-    Console::$tableRowSeparator = ' ';
-    //Console::$tableColumnSeparator = '|';
+    Console::$tableHorizontalSeparator = ' ';
+    //Console::$tableVerticalSeparator = '|';
     Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'magenta', 'bold'));
 
 
     Console::log(' '.Console::tableRow($rowHeaders, 'white', 'magenta', 'bold'));
-    Console::$tableRowSeparator = '_';
+    Console::$tableHorizontalSeparator = '_';
     Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'magenta', 'bold'));
     Console::log(' '.Console::tableRowEmpty($rowHeaders, 'black', 'white'));
 
@@ -119,12 +117,17 @@ function writeIndex()
     foreach (getIndex() as $key => $value){
        
        if (file_exists( __DIR__ . '/'. $value[2])) {
-            Console::log(' '.Console::tableRow([
-                $key        => 10, 
-                $value[0]   => 25, 
-                $value[1]   => 70
-            ], 'black', ($i % 2 == 1) ? 'white' :  'yellow'));
-            
+            Console::log(' '.
+                Console::tableRow([
+                    $key        => 10, 
+                    $value[0]   => 25, 
+                    $value[1]   => 70
+                ], 
+                    ($i % 2 == 1) ? 'black' :  'white',  
+                    ($i % 2 == 1) ? 'white' :  'cyan',
+                    ($i % 2 == 1) ? ''      :  'bold'
+                )
+            );
             $i++;
         }
         

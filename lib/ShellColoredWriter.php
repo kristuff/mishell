@@ -21,7 +21,7 @@
 
 namespace Kristuff\Mishell;
 
-abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter 
+abstract class ShellColoredWriter extends \Kristuff\Mishell\ShellWriter 
 {
     /**
      * Foreground colors constants
@@ -329,8 +329,7 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
     {
         self::cmd('relog',func_get_args());
     }  
-
-   
+       
     /**
      * A cli version of str_pad() that takes care of not printable ANSI chars
      *
