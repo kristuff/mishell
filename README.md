@@ -40,7 +40,7 @@ Deploy with your project (in `composer.json`):
 {
     ...
     "require": {
-        "kristuff/mishell": "0.*"
+        "kristuff/mishell": "dev-master"
     }
 }
 ```
@@ -49,7 +49,7 @@ Run the sample
 --------
 ![logo](doc/screenshots/index.png)
 
-- clone this project (*demo* and *doc* folders are excluded from dist)
+- clone this repo on github (*demo* and *doc* folders are excluded from dist)
     ```bash
     $ git clone https://github.com/kristuff/mishell.git
     ```
