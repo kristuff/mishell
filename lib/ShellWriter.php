@@ -21,7 +21,7 @@
 
 namespace Kristuff\Mishell;
 
-abstract class BaseWriter 
+abstract class ShellWriter 
 {
     /**
      * EOF constant
@@ -32,77 +32,6 @@ abstract class BaseWriter
      */
     protected static $EOF = "\n";
     
-    /**
-     * Switch to new window
-     *
-     * @access protected
-     * @static method
-     *
-     * @return void
-     */
-    public  static function newWindow() {
-        if (!self::isWin() ){
-            system('tput smcup');
-            self::clear();
-        }
-    }
-
-    /**
-     * Restore primary window
-     *
-     * @access protected
-     * @static method
-     *
-     * @return void
-     */
-    public  static function restoreWindow() {
-        if (!self::isWin() ){
-            system('tput rmcup');
-        }
-    }
-
-    /**
-     * Hide user input in console
-     *
-     * @access protected
-     * @static method
-     *
-     * @return void
-     */
-    protected  static function hideInput() {
-        if (!self::isWin() ){
-            system('stty -echo');
-        }
-    }
- 
-    /**
-     * Restore user input in console
-     *
-     * @access protected
-     * @static method
-     *
-     * @return void
-     */
-    protected  static function restoreInput() {
-        if (!self::isWin()){
-            system('stty echo');
-        }
-    }
-
-    /**
-     * Clear the console
-     *
-     * @access protected
-     * @static method
-     *
-     * @return void
-     */
-    public static function clear() 
-    {
-        //use 'cls' for Windows users or 'clear' for Linux users :
-        system(self::isWin() ? 'cls' : 'clear');
-    }
-
     /**
      * Get whether the current platform is Windows or not.
      *
@@ -116,4 +45,74 @@ abstract class BaseWriter
         return strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
     }
 
+    /**
+     * Switch to new window
+     *
+     * @access public
+     * @static method
+     *
+     * @return void
+     */
+    public static function newWindow() {
+        if (!self::isWin() ){
+            system('tput smcup');
+            self::clear();
+        }
+    }
+
+    /**
+     * Restore primary window
+     *
+     * @access public
+     * @static method
+     *
+     * @return void
+     */
+    public static function restoreWindow() {
+        if (!self::isWin() ){
+            system('tput rmcup');
+        }
+    }
+
+    /**
+     * Hide user input in console
+     *
+     * @access public
+     * @static method
+     *
+     * @return void
+     */
+    public static function hideInput() {
+        if (!self::isWin() ){
+            system('stty -echo');
+        }
+    }
+ 
+    /**
+     * Restore user input in console
+     *
+     * @access public
+     * @static method
+     *
+     * @return void
+     */
+    public static function restoreInput() {
+        if (!self::isWin()){
+            system('stty echo');
+        }
+    }
+
+    /**
+     * Clear the console
+     *
+     * @access public
+     * @static method
+     *
+     * @return void
+     */
+    public static function clear() 
+    {
+        //use 'cls' for Windows users or 'clear' for Linux users :
+        system(self::isWin() ? 'cls' : 'clear');
+    }
 }
