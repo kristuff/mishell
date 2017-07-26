@@ -75,18 +75,18 @@ Documentation
 
 1. [Overview](#1-overview) 
 
-    1.1 [Working with styles](#1-1-working-with-styles)
-    1.2 [Known styles](#1-2-known-styles)
+    1.1 [Working with styles](#11-working-with-styles) 
+    1.2 [Known styles](#12-known-styles)
 
-        1.2.1 [Known background colors](#1-2-1-known-foreground-colors)
-        1.2.2 [Known background colors](#1-2-2-known-background-colors)
-        1.2.3 [Known background colors](#1-2-3-known-options)
+        1.2.1 [Known foreground colors](#121-known-foreground-colors)   
+        1.2.2 [Known background colors](#122-known-background-colors)   
+        1.2.3 [Known options](#123-known-options) 
 
 2. [Api methods](#2-api-methods) 
 
-    2.1 [Writing methods](#2-1-writing-methods)  
-    2.2 [Text/layout builder methods](#2-2-text-layout-builder-methods)   
-    2.3 [Misc](#2-3-misc)   
+    2.1 [Writing methods](#21-writing-methods)  
+    2.2 [Text/layout builder methods](#22-text-layout-builder-methods)   
+    2.3 [Misc](#23-misc)   
 
 
 ## 1. Overview
@@ -94,7 +94,7 @@ Documentation
 The lib consists of one class `\Kristuff\Mishell\Console` that contains mainly 3 types of methods:
 
 - writing methods (normal or stylized/colorized text) : writes something
-- stylized/colorized CLI text builder methods : returns a formated string       
+- stylized/colorized CLI text builder methods : returns a formated string      
 - layout string builder methods (tables, padding) : returns a formated string
 
 ### 1.1 Working with styles
@@ -192,7 +192,7 @@ Method | Description | Return | Note
 `Console::pad(TODO)`                    | TODO | `string` | 
 `Console::tableRow(TODO)`               | TODO | `string` | 
 `Console::tableRowStart(TODO)`          | TODO | `string` | 
-`Console::tableRowEmpry(TODO)`          | TODO | `string` | 
+`Console::tableRowEmpty(TODO)`          | TODO | `string` | 
 `Console::tableRowSeparator(TODO)`      | TODO | `string` | 
 `Console::tableRowCell(TODO)`           | TODO | `string` | 
 `Console::tableResetDefaults(TODO)`     | TODO | `void`   | 
@@ -210,6 +210,7 @@ Method | Description | Return | Note
 
 [...] TODO 
 + tables methods
++ enum styles
  ...
 
 License
