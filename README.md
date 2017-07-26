@@ -69,13 +69,24 @@ Run the sample
 
 Documentation
 --------
-*in progress...*
+    
+    *in progress...*
+
 
 1. [Overview](#1-overview) 
-2. [Api methods](#2) 
-    2.1 [Wrting methods](#2-1-writing-methods) 
-    2.2 [Text builder methods](#2-2-text-builder-methods) 
-    2.3 [Misc](#2-3-misc) 
+
+    1.1 [Working with styles](#1-1-working-with-styles)
+    1.2 [Known styles](#1-2-known-styles)
+
+        1.2.1 [Known background colors](#1-2-1-known-foreground-colors)
+        1.2.2 [Known background colors](#1-2-2-known-background-colors)
+        1.2.3 [Known background colors](#1-2-3-known-options)
+
+2. [Api methods](#2-api-methods) 
+
+    2.1 [Writing methods](#2-1-writing-methods)  
+    2.2 [Text/layout builder methods](#2-2-text-layout-builder-methods)   
+    2.3 [Misc](#2-3-misc)   
 
 
 ## 1. Overview
@@ -85,6 +96,8 @@ The lib consists of one class `\Kristuff\Mishell\Console` that contains mainly 3
 - writing methods (normal or stylized/colorized text) : writes something
 - stylized/colorized CLI text builder methods : returns a formated string       
 - layout string builder methods (tables, padding) : returns a formated string
+
+### 1.1 Working with styles
 
 To be more flexible, most writing/text/layout builder methods take an indefinite number of arguments called `[styles]` in this documentation. 
 The arguments are analyzed as follows:
@@ -111,6 +124,54 @@ Console::write('my string', 'blue', 'underline', 'none');             // Writes 
 [...]
 //Got it?
 ```
+
+### 1.2 Known styles
+
+### 1.2.1 Known foreground colors
+
+Name            |  ANSI Code 
+--------------- | --------:  
+normal          | \033[39m       
+black           | \033[30m  
+gray            | \033[1;30m 
+lightgray       | \033[37m  
+white           | \033[1;37m  
+blue            | \033[34m    
+lightblue       | \033[1;34m  
+green           | \033[32m     
+lightgreen      | \033[1;32m   
+cyan            | \033[36m     
+lightcyan       | \033[1;36m    
+red             | \033[31m     
+lightred        | \033[1;31m     
+magenta         | \033[35m       
+lightmagenta    | \033[1;35m     
+brown           | \033[33m       
+yellow          | \033[1;33m     
+
+### 1.2.2 Known background colors
+
+Name            |  ANSI Code 
+--------------- | --------:  
+black           | \033[40m 
+red             | \033[41m 
+green           | \033[42m 
+yellow          | \033[43m 
+blue            | \033[44m  
+magenta         | \033[45m   
+cyan            | \033[46m    
+white           | \033[47m    
+
+### 1.2.3 Known options
+
+Name            |  ANSI Code 
+--------------- | --------:  
+none            | \033[0m       
+bold            | \033[1m 
+underline       | \033[4m 
+blink           | \033[5m 
+reverse         | \033[7m 
+
 ## 2. Api methods
 ### 2.1 Writing methods
 
@@ -124,6 +185,7 @@ Method | Description | Return| Note
 `Console::askPassword($str, [styles])`  | Writes a [formatted] string in the console and waits for an input. Returns but does not print user input. | `string` | **Not supported** on windows platform
 
 ### 2.2 Text/layout builder methods
+
 Method | Description | Return | Note
 --- | --- | --- | ---
 `Console::text($str, [styles])`         | Gets a [formatted] string to be returned in the console. | `string` |
