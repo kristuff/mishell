@@ -48,27 +48,33 @@ Run the sample
 --------
 ![logo](doc/screenshots/index.png)
 
-- clone this project (demo and doc is exclude from dist)
-```bash
-$ git clone https://github.com/kristuff/mishell.git
-```
+- clone this project (demo and doc folers are excluded from dist)
+    ```bash
+    $ git clone https://github.com/kristuff/mishell.git
+    ```
 - go to mishell folder
-```bash
-$ cd mishell
-```
+    ```bash
+    $ cd mishell
+    ```
 - install (it just builds autoloader)
-```bash
-$ composer install
-```
+    ```bash
+    $ composer install
+    ```
 - run sample
-```bash
-$ php demo/index.php
-```
+    ```bash
+    $ php demo/index.php
+    ```
 
 Documentation
 --------
 
+## [1. Overview](#1._Overview)
+## [2. Api methods](#2)
+
+
 ...TODO...
+
+## 1. Overview
 
 -  `Console::text($str, [styles])`  
     Gets a formatted string to be returned in the console 
