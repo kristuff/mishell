@@ -83,36 +83,48 @@ The lib consists of one class `\Kristuff\Mishell\Console` that contains mainly 3
 - stylized/colorized CLI text builder methods : return a string       
 - layout string builder methods (tables, padding) : return a string
 
-To be more flexible, most writing/text/layout builder methods take an indefinite number of arguments called [styles] in this documentation . 
+To be more flexible, most writing/text/layout builder methods take an indefinite number of arguments called [styles] in this documentation. 
 The arguments are analyzed as follows:
 
 - First argument that matchs to known foreground color is taken as foreground color.
-- First argument that matchs to known background color (when a foreground is already define) is taken as foreground color.   
-- Other arguments that match to known option color are taken as option.
+- First argument that matchs to known background color (when a foreground is already define) is taken as foreground color (you cannot use a backround color without an expclit foreground color).   
+- Other arguments that match to known option are taken as options.
 
+Examples:
+```php
+Console::log('my string', 'blue');                                  // writes a text color blue
+Console::log('my string', 'bold');                                  // writes a text style bold
+Console::log('my string', 'blue', 'underline');                     // writes a text color blue and style underline
+Console::log('my string', 'blue', 'white');                         // writes a text color blue on white
+Console::log('my string', 'blue', 'white', 'underline');            // writes a text color blue on white and style underline
+Console::log('my string', 'blue', 'white', 'underline', 'bold');    // writes a text color blue on white and styles underline+bold
+Console::log('my string', 'blue', 'white', 'reverse');              // writes a text color blue on white and style reverse (so => white on blue...)
+Console::log('my string', 'blue', 'white', 'underline');            // writes a text color blue on white and style underline (except background after foreground, args order does not care)
+Console::log('my string', 'underline', 'blue', 'white');            // writes a text color blue on white and style underline (except background after foreground, args order does not care)
+Console::log('my string', 'blue', 'underline', 'white');            // writes a text color blue on white and style underline (except background after foreground, args order does not care)
+[...]
+//Got it?
+```
 ## 2. Api methods
 
 -  `Console::text($str, [styles])`  
-    Gets a formatted string to be returned in the console 
-    
+    Gets a formatted string to be returned in the console. 
     Returns `string`
--  `Console::log($str, [styles])`   
-    Writes a formatted string in the console with new line
-    
+-  `Console::log($str, [styles])` 
+    Writes a formatted string in the console with new line. 
     Returns `void`
 -  `Console::reLog($str, [styles])`
-    Writes or overwites the curren line.
-    
+    Writes or overwites the curren line. 
     Returns `void`
 -  `Console::ask($str, [styles])`   
-    Writes a formatted string in the console and waits for an input.
-
+    Writes a formatted string in the console and waits for an input. 
     Returns `string`
 -  `Console::askInt($str, [styles])` 
-    Writes a formatted string in the console and waits for an int input.
+    Writes a formatted string in the console and waits for an int input. 
     Returns `int`|`bool`    
 
 
+... TODO ...
 
 License
 -------
