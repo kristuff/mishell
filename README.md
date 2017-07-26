@@ -12,7 +12,7 @@
 - [Requirements](#requirements) 
 - [Install](#install) 
 - [Run the sample](#run-the-sample) 
-- [Documentation](#documentation)
+- [Documentation](#documentation) *in progress...*
 - [License](#license) 
 
 
@@ -68,12 +68,11 @@ Run the sample
 
 Documentation
 --------
+*in progress...*
 
 1. [Overview](#1-overview)
 2. [Api methods](#2)
 
-
-...TODO...
 
 ## 1. Overview
 
@@ -135,8 +134,10 @@ Console::write('my string', 'blue', 'underline', 'none');             // Writes 
     Play the bell if available. 
     Returns `void`
 
-... TODO + switch window 
-... + tables methods ...
+[...] TODO 
++ switch window 
++ tables methods
+ ...
 
 License
 -------
