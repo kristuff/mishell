@@ -70,16 +70,13 @@ Run the sample
 Documentation
 --------
     
-    *in progress...*
-
+*in progress...*
 
 1. [Overview](#1-overview)  
   1.1 [Working with styles](#11-working-with-styles)    
-  1.2 [Known styles](#12-known-styles)  
-    
-    1.2.1 [Known foreground colors](#121-known-foreground-colors)   
-    1.2.2 [Known background colors](#122-known-background-colors)   
-    1.2.3 [Known options](#123-known-options) 
+  1.2 [Known foreground colors](#12-known-foreground-colors)   
+  1.3 [Known background colors](#13-known-background-colors)   
+  1.4 [Known options](#14-known-options) 
 2. [Api methods](#2-api-methods)     
     2.1 [Writing methods](#21-writing-methods)   
     2.2 [Text/layout builder methods](#22-text-layout-builder-methods)   
@@ -122,9 +119,7 @@ Console::write('my string', 'blue', 'underline', 'none');             // Writes 
 //Got it?
 ```
 
-### 1.2 Known styles
-
-### 1.2.1 Known foreground colors
+### 1.2 Known foreground colors
 
 Name            |  ANSI Code 
 --------------- | --------:  
@@ -146,7 +141,7 @@ lightmagenta    | \033[1;35m
 brown           | \033[33m       
 yellow          | \033[1;33m     
 
-### 1.2.2 Known background colors
+### 1.3 Known background colors
 
 Name            |  ANSI Code 
 --------------- | --------:  
@@ -159,7 +154,7 @@ magenta         | \033[45m
 cyan            | \033[46m    
 white           | \033[47m    
 
-### 1.2.3 Known options
+### 1.4 Known options
 
 Name            |  ANSI Code 
 --------------- | --------:  
