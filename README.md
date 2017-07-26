@@ -73,16 +73,16 @@ Documentation
     *in progress...*
 
 
-1. [Overview](#1-overview) 
-  1.1 [Working with styles](#11-working-with-styles) 
-  1.2 [Known styles](#12-known-styles)
+1. [Overview](#1-overview)  
+  1.1 [Working with styles](#11-working-with-styles)    
+  1.2 [Known styles](#12-known-styles)  
     1.2.1 [Known foreground colors](#121-known-foreground-colors)   
     1.2.2 [Known background colors](#122-known-background-colors)   
     1.2.3 [Known options](#123-known-options) 
-2. [Api methods](#2-api-methods) 
-    2.1 [Writing methods](#21-writing-methods)  
-    2.2 [Text/layout builder methods](#22-text-layout-builder-methods)   
-    2.3 [Misc](#23-misc)   
+2. [Api methods](#2-api-methods)     
+    .1 [Writing methods](#21-writing-methods)   
+    .2 [Text/layout builder methods](#22-text-layout-builder-methods)   
+    .3 [Misc](#23-misc)   
 
 
 ## 1. Overview
