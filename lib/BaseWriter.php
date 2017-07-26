@@ -43,6 +43,7 @@ abstract class BaseWriter
     public  static function newWindow() {
         if (!self::isWin() ){
             system('tput smcup');
+            self::clear();
         }
     }
 
@@ -96,7 +97,7 @@ abstract class BaseWriter
      *
      * @return void
      */
-    public  static function clear() 
+    public static function clear() 
     {
         //use 'cls' for Windows users or 'clear' for Linux users :
         system(self::isWin() ? 'cls' : 'clear');

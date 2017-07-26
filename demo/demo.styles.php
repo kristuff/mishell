@@ -5,14 +5,14 @@ use Kristuff\Mishell\Console;
 
 $rowHeaders = ['#Num' => 7, 'Style name' => 15, ' ANSI Code'  => 15, ' Sample ouput' => 50];
 
-Console::log('  '.Console::tableRowHeader($rowHeaders));
+Console::log('  '.Console::tableRowSeparator($rowHeaders));
 Console::log('  '.Console::tableRow($rowHeaders));
-Console::log('  '.Console::tableRowHeader($rowHeaders));
+Console::log('  '.Console::tableRowSeparator($rowHeaders));
 Console::log('  '.Console::tableRowEmpty($rowHeaders));
 
 $i = 1;
 
-foreach (Console::$options as $option => $value){
+foreach (Console::getStyles()['options'] as $option => $value){
     Console::log('  '.Console::tableRow([
        ' ' . $i     => 7,
         $option        => 15, 
@@ -22,5 +22,5 @@ foreach (Console::$options as $option => $value){
     $i++;
 }
 Console::log('  '.Console::tableRowEmpty($rowHeaders));
-Console::log('  '.Console::tableRowHeader($rowHeaders));
+Console::log('  '.Console::tableRowSeparator($rowHeaders));
 

@@ -18,25 +18,19 @@ function writeLoader()
 
     Console::log();
     Console::log();
-    Console::log('     '. Console::text("                _  ", 'black', 'white') . Console::text("  ____  _          _ _    ", 'magenta', 'white'));
-    Console::log('     '. Console::text("      _ __ ___ (_) ", 'black', 'white') . Console::text(" / ___|| |__   ___| | |   ", 'magenta', 'white'));
-    Console::log('     '. Console::text("     | '_ ` _ \| | ", 'black', 'white') . Console::text(" \___ \| '_ \ / _ \ | |   ", 'magenta', 'white'));
-    Console::log('     '. Console::text("     | | | | | | | ", 'black', 'white') . Console::text("  ___) | | | |  __/ | |   ", 'magenta', 'white'));
-    Console::log('     '. Console::text("     |_| |_| |_|_| ", 'black', 'white') . Console::text(" |____/|_| |_|\___|_|_|   ", 'magenta', 'white'));
-    Console::log('     '. Console::text("                   ", 'black', 'white') . Console::text("                          ", 'magenta', 'white'));
-    Console::log('     '. Console::text("                   ", 'black', 'white') . Console::text("        Version 0.1       ", 'black', 'white'));
-    Console::log('     '. Console::text("                   ", 'black', 'white') . Console::text("        © 2017 Kristuff   ", 'black', 'white'));
-    Console::log('     '. Console::text("                   ", 'black', 'white') . Console::text("                          ", 'magenta', 'white'));
+    Console::log('    '. Console::text("                _  ", 'black', 'white') . Console::text("  ____  _          _ _    ", 'magenta', 'white'));
+    Console::log('    '. Console::text("      _ __ ___ (_) ", 'black', 'white') . Console::text(" / ___|| |__   ___| | |   ", 'magenta', 'white'));
+    Console::log('    '. Console::text("     | '_ ` _ \| | ", 'black', 'white') . Console::text(" \___ \| '_ \ / _ \ | |   ", 'magenta', 'white'));
+    Console::log('    '. Console::text("     | | | | | | | ", 'black', 'white') . Console::text("  ___) | | | |  __/ | |   ", 'magenta', 'white'));
+    Console::log('    '. Console::text("     |_| |_| |_|_| ", 'black', 'white') . Console::text(" |____/|_| |_|\___|_|_|   ", 'magenta', 'white'));
+    Console::log('    '. Console::text("                   ", 'black', 'white') . Console::text("                          ", 'magenta', 'white'));
+    Console::log('    '. Console::text("                   ", 'black', 'white') . Console::text("        Version 0.1       ", 'black', 'white'));
+    Console::log('    '. Console::text("                   ", 'black', 'white') . Console::text("        © 2017 Kristuff   ", 'black', 'white'));
+    Console::log('    '. Console::text("                   ", 'black', 'white') . Console::text("                          ", 'magenta', 'white'));
     Console::log();
     Console::log();
  
-//            _   ____  _          _ _
-//  _ __ ___ (_) / ___|| |__   ___| | |
-// | '_ ` _ \| | \___ \| '_ \ / _ \ | |
-// | | | | | | |  ___) | | | |  __/ | |
-// |_| |_| |_|_| |____/|_| |_|\___|_|_|
-
-    $pad = '     ';
+    $pad = '    ';
 
     // fake progress message 
     for ($i=0 ; $i<=100 ; $i++) {
@@ -61,26 +55,25 @@ function writeLoader()
 function getIndex()
 {
     $index = [];
-    //$index[1]  = ['Basic',                'sdcsdcsd', ''];
 
-    $index[1] = ['Styles',       'See available basic styles',      'demo.styles.php'];
-    $index[2] = ['Colors',       'See available foreground colors', 'demo.colors.php'];
-    $index[3] = ['Backgrounds',  'See available background colors', 'demo.bgcolors.php'];
 
-    $index[56] = ['Text',   'Console::log() overview',     'demo.log.php'];
-    $index[51] = ['Log',    'Console::log() overview',      'demo.log.php'];
-    $index[52] = ['ReLog',  'Console::relog() overview',    'demo.relog.php'];
+    
+    $index[1] =   ['Styles',        'How to get available basic styles',                'demo.styles.php'];
+    $index[2] =   ['Colors',        'How to get available foreground colors',           'demo.colors.php'];
+    $index[3] =   ['Backgrounds',   'How to get available background colors',           'demo.bgcolors.php'];
+    $index[11] =  ['Ask',           'How to ask? (get user input)',                     'demo.ask.php'];
+    $index[12] =  ['Ask Number',    'How to ask and expect a number?',                  'demo.askint.php'];
+    $index[13] =  ['Ask Password',  'How to ask a password? (do not print user input)', 'demo.askpassword.php'];
+    $index[14] =  ['Table',         'How to print a table?',                            'demo.table.php'];
+    $index[15] =  ['Bell',          'How to run the bell?',                             'demo.bell.php'];
+    $index[16] =  ['Progress',      'How to output progress message?',                  'demo.progress.php'];
+    $index[17] =  ['New window',    'How to open new/restore window?',                  'demo.window.php'];
 
-    $index[11] = ['ask',            'How to ask? (get user input)',                     'demo.ask.php'];
-    $index[12] = ['askInt',         'How to ask and expect a number?',                  'demo.askint.php'];
-    $index[13] = ['ask a password', 'How to ask a password (do not print user input)',  'demo.askpassword.php'];
-    $index[14] = ['Table',          'How to print a table',                             'demo.table.php'];
-    $index[15] = ['Bell',           'How to run the bell?',                             'demo.bell.php'];
-    $index[16] = ['Progress',       'How to ouput progress message?',                   'demo.progress.php'];
-//using Console::bell([int $repeat)].
-    $index[99] = ['TEST',   '',     'demo.allstyles.php'];
-
-//$index[72] = ['Table',  'Console::table() overview',      'demo.table2.php'];
+    $index[4] = ['Text',  'Console::text() overview',    'demo.log.php'];      //TODO
+    $index[5] = ['Log',   'Console::log() overview',     'demo.log.php'];      //TODO
+    $index[6] = ['ReLog', 'Console::relog() overview',   'demo.relog.php'];    // TODO
+    $index[7] = ['Pad',   'Console::pad() overview',     'demo.pad.php'];
+  
     return $index;
 }
 
@@ -88,57 +81,64 @@ function writeHeader()
 {
     Console::clear();
     Console::log();
-    Console::log('  '.Console::text('****************************************************', 'white', 'cyan'));
-    Console::log('  '.Console::text('****** Interactive ~Mishell^^ Console sample *******', 'white', 'cyan'));
-    Console::log('  '.Console::text('****************************************************', 'white', 'cyan'));
+    Console::log(' '.Console::text('                                                   ', 'white', 'bold', 'underline'));
+    Console::log(' '.Console::text('                                                   ', 'white', 'cyan', 'bold'));
+    Console::log(' '.Console::text('   --- Interactive ~Mishell^^ Console sample ---   ', 'white', 'cyan', 'bold'));
+    Console::log(' '.Console::text('                                                   ', 'white', 'cyan', 'bold', 'underline'));
     Console::log();
+    Console::log('my string', 'blue', 'underline', 'none');    // Writes a text with no style at all (note the 'none' argument...)
+
 }
 
 function writeIndex()
 {
-    Console::log('  '. Console::text('Index:', 'underline', 'bold'));
+    Console::log(' '. Console::text('Index:', 'underline', 'bold'));
     $rowHeaders = ['Index' => 10, 'Item'  => 25, 'Description' => 70];
 
     // customize table separator
     // customize table row style (color, bg...)
-    Console::$tableColumnSeparator = ' ';
+    Console::$tableColumnSeparator = '';
     Console::$tableRowSeparator = ' ';
 
-    //Console::log('  '.Console::tableRowHeader($rowHeaders, 'gray'));
+    //Console::log(' '.Console::tableRowSeparator($rowHeaders, 'gray'));
 
     Console::$tableRowSeparator = '_';
-    Console::log('  '.Console::tableRowHeader($rowHeaders, 'lightgray'));
+    Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'bold'));
 
     Console::$tableRowSeparator = ' ';
-    Console::$tableColumnSeparator = '|';
-    Console::log('  '.Console::tableRowHeader($rowHeaders, 'lightgray','black'));
+    //Console::$tableColumnSeparator = '|';
+    Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'magenta', 'bold'));
 
 
-    Console::log('  '.Console::tableRow($rowHeaders, 'lightgray', 'black'));
+    Console::log(' '.Console::tableRow($rowHeaders, 'white', 'magenta', 'bold'));
     Console::$tableRowSeparator = '_';
-    Console::log('  '.Console::tableRowHeader($rowHeaders, 'lightgray','black'));
-    Console::log('  '.Console::tableRowEmpty($rowHeaders, 'lightgray','black'));
+    Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'magenta', 'bold'));
+    Console::log(' '.Console::tableRowEmpty($rowHeaders, 'black', 'white'));
 
+    $i = 0;
     foreach (getIndex() as $key => $value){
-
-        if (file_exists( __DIR__ . '/'. $value[2])) {
-            Console::log('  '.Console::tableRow([
+       
+       if (file_exists( __DIR__ . '/'. $value[2])) {
+            Console::log(' '.Console::tableRow([
                 $key        => 10, 
                 $value[0]   => 25, 
                 $value[1]   => 70
-            ], 'lightgray','black'));
+            ], 'black', ($i % 2 == 1) ? 'white' :  'yellow'));
+            
+            $i++;
         }
+        
     }
-    Console::log('  '.Console::tableRowHeader($rowHeaders, 'lightgray','black'));
+    Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'white', 'bold'));
 
-    // reset table seperator to defaults
+    // reset table sseparators to defaults
     Console::tableResetDefaults();
 
     // --------------------
 
     Console::log('');
-    Console::log('  ' .Console::text('Tips:', 'underline', 'bold'));
-    Console::log('  '. Console::text('- At any time you can stop this program using [', 'green') .Console::text('Ctrl+C', 'black','white') .Console::text(']', 'green'));
+    Console::log(' ' .Console::text('Tips:', 'underline', 'bold'));
+    Console::log(' '. Console::text('- At any time you can stop this program using [', 'green') .Console::text('Ctrl+C', 'black','white') .Console::text(']', 'green'));
     Console::log('');
 }
 
@@ -146,7 +146,7 @@ function askIndex()
 {
     $base = Console::text('~miShell^^' , 'yellow');
     $base .= Console::text(' $ ' , 'gray');
-    $selectedIndex = Console::askInt($base . Console::text('Enter desired index: ', 'white'));
+    $selectedIndex = Console::askInt($base . Console::text('Enter desired index then press [Enter] to run sample > ', 'white'));
     $index = getIndex();
 
     switch($selectedIndex){
@@ -178,7 +178,7 @@ function askIndex()
                 askIndex();
             }
 
-            Console::ask($base . Console::text('Press any key to go back to index.', 'white'));
+            Console::ask($base . Console::text('Press [Enter] to go back to index > ', 'white'));
             goIndex();
     }
 }
