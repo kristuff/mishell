@@ -1,11 +1,9 @@
 
 ![logo](doc/screenshots/loading.png)
 
-=================
+# Kristuff miShell 
 
-Kristuff miShell 
-
-A mini PHP CLI app/report builder: 
+> A mini PHP library to build beautiful CLI apps and reports
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4fd3728ced2b4d95b0eb549db7a0053b)](https://www.codacy.com/app/kristuff_/mishell?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kristuff/patabase&amp;utm_campaign=Badge_Grade)
 [![Code Climate](https://codeclimate.com/github/kristuff/mishell/badges/gpa.svg)](https://codeclimate.com/github/kristuff/mishell)
@@ -13,19 +11,19 @@ A mini PHP CLI app/report builder:
 - [Features](#features) 
 - [Requirements](#requirements) 
 - [Install](#install) 
-- [Documentation](../Documentation) (external file) 
+- [Documentation](#Documentation)
 - [License](#license) 
 
 
 Features
 --------
-- Colorized shell writing methods:
+- Writing methods:
     - Basic or colored/stylized text
     - Tables
     - Progress message
 - Get user inputs
-    - standard (text) input
-    - password (hidden input)
+    - standard text input
+    - hidden text input (no supported on Windows)
     - numeric values   
 - Open new/restore 'window' (no supported on Windows)
 - Run the bell
@@ -58,7 +56,7 @@ $ git clone https://github.com/kristuff/mishell.git
 ```bash
 $ cd mishell
 ```
-- install 
+- install (it just builds autoloader)
 ```bash
 $ composer install
 ```
