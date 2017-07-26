@@ -11,7 +11,8 @@
 - [Features](#features) 
 - [Requirements](#requirements) 
 - [Install](#install) 
-- [Documentation](#Documentation)
+- [Run the sample](#run-the-sample) 
+- [Documentation](#documentation)
 - [License](#license) 
 
 
@@ -34,7 +35,7 @@ Requirements
 
 Install
 --------
-- Deploy with your project (in `composer.json`):
+Deploy with your project (in `composer.json`):
 ```
 {
     ...
@@ -48,7 +49,7 @@ Run the sample
 --------
 ![logo](doc/screenshots/index.png)
 
-- clone this project (demo and doc folers are excluded from dist)
+- clone this project (*demo* and *doc* folders are excluded from dist)
     ```bash
     $ git clone https://github.com/kristuff/mishell.git
     ```
@@ -77,15 +78,17 @@ Documentation
 ## 1. Overview
 
 The lib consists of one class `\Kristuff\Mishell\Console` that contains mainly 3 types of methods:
-    - writing methods (normal or stylized/colorized text) : echo something
-    - stylized/colorized CLI text builder methods : return a string       
-    - layout string builder methods (tables, padding) : return a string
 
-To be more flexible, most writing/text/layout builder methods take an indefinite number of arguments called in this document as [styles]. 
+- writing methods (normal or stylized/colorized text) : echo something
+- stylized/colorized CLI text builder methods : return a string       
+- layout string builder methods (tables, padding) : return a string
+
+To be more flexible, most writing/text/layout builder methods take an indefinite number of arguments called [styles] in this documentation . 
 The arguments are analyzed as follows:
-    - First argument that matchs to known foreground color is taken as foreground color.
-    - First argument that matchs to known background color (when a foreground is already define) is taken as foreground color.   
-    - Other arguments that match to known option color are taken as option.
+
+- First argument that matchs to known foreground color is taken as foreground color.
+- First argument that matchs to known background color (when a foreground is already define) is taken as foreground color.   
+- Other arguments that match to known option color are taken as option.
 
 ## 2. Api methods
 
