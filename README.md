@@ -71,11 +71,11 @@ Documentation
 --------
 *in progress...*
 
-1. [Overview](#1-overview)
-2. [Api methods](#2)
-    2.1 [Wrting methods](#2-1-writing-methods)
-    2.2 [Text builder methods](#2-2-text-builder-methods)
-    2.3 [Misc](#2-3-misc)
+1. [Overview](#1-overview) 
+2. [Api methods](#2) 
+    2.1 [Wrting methods](#2-1-writing-methods) 
+    2.2 [Text builder methods](#2-2-text-builder-methods) 
+    2.3 [Misc](#2-3-misc) 
 
 
 ## 1. Overview
@@ -114,28 +114,37 @@ Console::write('my string', 'blue', 'underline', 'none');             // Writes 
 ## 2. Api methods
 ### 2.1 Writing methods
 
-Method | Description | Return
---- | --- | ---
-`Console::write($str, [styles])`        | Writes a [formatted] string in the console. | `void`
-`Console::log($str, [styles])`          | Writes a [formatted] string in the console with new line. | `void`
-`Console::reLog($str, [styles])`        | Writes or overwites the current line with a [formatted] string. | `void`
-`Console::ask($str, [styles])`          | Writes a [formatted] string in the console and waits for an input. Returns that input. |`string`
-`Console::askInt($str, [styles])`       | Writes a [formatted] string in the console and waits for an int input. | `int`&#124;`bool`    
-`Console::askPassword($str, [styles])`  | Writes a [formatted] string in the console and waits for an input. Returns but does not print user input. | `string`
+Method | Description | Return| Note
+--- | --- | --- | ---
+`Console::write($str, [styles])`        | Writes a [formatted] string in the console. | `void` |
+`Console::log($str, [styles])`          | Writes a [formatted] string in the console with new line. | `void` |
+`Console::reLog($str, [styles])`        | Writes or overwites the current line with a [formatted] string. | `void` |
+`Console::ask($str, [styles])`          | Writes a [formatted] string in the console and waits for an input. Returns that input. |`string` |
+`Console::askInt($str, [styles])`       | Writes a [formatted] string in the console and waits for an int input. | `int`&#124;`bool` |    
+`Console::askPassword($str, [styles])`  | Writes a [formatted] string in the console and waits for an input. Returns but does not print user input. | `string` | **Not supported** on windows platform
 
-### 2.2 Text builder methods
-Method | Description | Return
---- | --- | ---
-`Console::text($str, [styles])`         | Gets a [formatted] string to be returned in the console. | `string`
-`Console::pad(TODO)                     | TODO | `string`
+### 2.2 Text/layout builder methods
+Method | Description | Return | Note
+--- | --- | --- | ---
+`Console::text($str, [styles])`         | Gets a [formatted] string to be returned in the console. | `string` |
+`Console::pad(TODO)`                    | TODO | `string` | 
+`Console::tableRow(TODO)`               | TODO | `string` | 
+`Console::tableRowStart(TODO)`          | TODO | `string` | 
+`Console::tableRowEmpry(TODO)`          | TODO | `string` | 
+`Console::tableRowSeparator(TODO)`      | TODO | `string` | 
+`Console::tableRowCell(TODO)`           | TODO | `string` | 
+`Console::tableResetDefaults(TODO)`     | TODO | `void`   | 
+
 
 ### 2.3 Misc
 
-Method | Description | Return
---- | --- | ---
-`Console::bell()`                       | Play the bell if available.       | `void`
-`Console::newWindow()`                  | *Switch* to a new window          | `void`
-`Console::restoreWindow()`              | *restore* to a previous window    | `void`
+Method | Description | Return | Note
+--- | --- | --- | ---
+`Console::bell()`                       | Play the bell if available.       | `void` |
+`Console::newWindow()`                  | Switch to a new window            | `void` |
+`Console::restoreWindow()`              | Restore the previous window       | `void` |
+`Console::HideInput()`                  | Hide user input in window         | `void` | **Not supported** on windows platform
+`Console::restoreInput()`               | Restore user input window         | `void` | **Not supported** on windows platform
 
 [...] TODO 
 + tables methods
