@@ -68,13 +68,26 @@ Run the sample
 Documentation
 --------
 
-## [1. Overview](#1._Overview)
-## [2. Api methods](#2)
+1. [Overview](#1-overview)
+2. [Api methods](#2)
 
 
 ...TODO...
 
 ## 1. Overview
+
+The lib consists of one class `\Kristuff\Mishell\Console` that contains mainly 3 types of methods:
+    - writing methods (normal or stylized/colorized text) : echo something
+    - stylized/colorized CLI text builder methods : return a string       
+    - layout string builder methods (tables, padding) : return a string
+
+To be more flexible, most writing/text/layout builder methods take an indefinite number of arguments called in this document as [styles]. 
+The arguments are analyzed as follows:
+    - First argument that matchs to known foreground color is taken as foreground color.
+    - First argument that matchs to known background color (when a foreground is already define) is taken as foreground color.   
+    - Other arguments that match to known option color are taken as option.
+
+## 2. Api methods
 
 -  `Console::text($str, [styles])`  
     Gets a formatted string to be returned in the console 
