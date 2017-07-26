@@ -79,29 +79,32 @@ Documentation
 
 The lib consists of one class `\Kristuff\Mishell\Console` that contains mainly 3 types of methods:
 
-- writing methods (normal or stylized/colorized text) : echo something
-- stylized/colorized CLI text builder methods : return a string       
-- layout string builder methods (tables, padding) : return a string
+- writing methods (normal or stylized/colorized text) : writes something
+- stylized/colorized CLI text builder methods : returns a formated string       
+- layout string builder methods (tables, padding) : returns a formated string
 
-To be more flexible, most writing/text/layout builder methods take an indefinite number of arguments called [styles] in this documentation. 
+To be more flexible, most writing/text/layout builder methods take an indefinite number of arguments called `[styles]` in this documentation. 
 The arguments are analyzed as follows:
 
-- First argument that matchs to known foreground color is taken as foreground color.
-- First argument that matchs to known background color (when a foreground is already define) is taken as foreground color (you cannot use a backround color without an expclit foreground color).   
-- Other arguments that match to known option are taken as options.
+- First argument that matchs to a known foreground color is taken as foreground color.
+- First argument that matchs to a known background color (when a foreground color is already defined) is taken as background color (you cannot use a background color without set explicitly foreground color before).   
+- Other arguments that match to a known option are taken as options.
+
+So except for background that should be after foreground, style arguments order does not matter. Just note that the `'none'` argument will reset any previous style arguments.
 
 Examples:
 ```php
-Console::log('my string', 'blue');                                  // writes a text color blue
-Console::log('my string', 'bold');                                  // writes a text style bold
-Console::log('my string', 'blue', 'underline');                     // writes a text color blue and style underline
-Console::log('my string', 'blue', 'white');                         // writes a text color blue on white
-Console::log('my string', 'blue', 'white', 'underline');            // writes a text color blue on white and style underline
-Console::log('my string', 'blue', 'white', 'underline', 'bold');    // writes a text color blue on white and styles underline+bold
-Console::log('my string', 'blue', 'white', 'reverse');              // writes a text color blue on white and style reverse (so => white on blue...)
-Console::log('my string', 'blue', 'white', 'underline');            // writes a text color blue on white and style underline (except background after foreground, args order does not care)
-Console::log('my string', 'underline', 'blue', 'white');            // writes a text color blue on white and style underline (except background after foreground, args order does not care)
-Console::log('my string', 'blue', 'underline', 'white');            // writes a text color blue on white and style underline (except background after foreground, args order does not care)
+Console::write('my string', 'blue');                                  // writes a text color blue
+Console::write('my string', 'bold');                                  // writes a text style bold
+Console::write('my string', 'blue', 'underline');                     // writes a text color blue and style underline
+Console::write('my string', 'blue', 'white');                         // writes a text color blue on white
+Console::write('my string', 'blue', 'white', 'underline');            // writes a text color blue on white and style underline
+Console::write('my string', 'blue', 'white', 'underline', 'bold');    // writes a text color blue on white and styles underline+bold
+Console::write('my string', 'blue', 'white', 'reverse');              // writes a text color blue on white and style reverse (so => white on blue...)
+Console::write('my string', 'blue', 'white', 'underline');            // writes a text color blue on white and style underline (except background after foreground, args order does not matter)
+Console::write('my string', 'underline', 'blue', 'white');            // writes a text color blue on white and style underline (except background after foreground, args order does not matter)
+Console::write('my string', 'blue', 'underline', 'white');            // writes a text color blue on white and style underline (except background after foreground, args order does not matter)
+Console::write('my string', 'blue', 'underline', 'none');             // Writes a text with no style at all (note the 'none' argument at the end...)
 [...]
 //Got it?
 ```
@@ -110,6 +113,9 @@ Console::log('my string', 'blue', 'underline', 'white');            // writes a 
 -  `Console::text($str, [styles])`  
     Gets a formatted string to be returned in the console. 
     Returns `string`
+-  `Console::write($str, [styles])` 
+    Writes a formatted string in the console. 
+    Returns `void`
 -  `Console::log($str, [styles])` 
     Writes a formatted string in the console with new line. 
     Returns `void`
@@ -117,14 +123,20 @@ Console::log('my string', 'blue', 'underline', 'white');            // writes a 
     Writes or overwites the curren line. 
     Returns `void`
 -  `Console::ask($str, [styles])`   
-    Writes a formatted string in the console and waits for an input. 
+    Writes a formatted string in the console and waits for an input. Returns that input.
     Returns `string`
 -  `Console::askInt($str, [styles])` 
     Writes a formatted string in the console and waits for an int input. 
     Returns `int`|`bool`    
+-  `Console::askPassword($str, [styles])`   
+    Writes a formatted string in the console and waits for an input. Returns but does not print user input. 
+    Returns `string`
+-  `Console::bell()`   
+    Play the bell if available. 
+    Returns `void`
 
-
-... TODO ...
+... TODO + switch window 
+... + tables methods ...
 
 License
 -------

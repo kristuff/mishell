@@ -31,22 +31,22 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
      * @var    array
      */
     protected static $foregroundColors = array(
-        'normal'       => '0;39',   // your default color
-        'black'        => '0;30', 
+        'normal'       => '39',   // your default color
+        'black'        => '30', 
         'gray'         => '1;30',
-        'lightgray'    => '0;37', 
+        'lightgray'    => '37', 
         'white'        => '1;37',
-        'blue'         => '0;34', 
+        'blue'         => '34', 
         'lightblue'    => '1;34',
-        'green'        => '0;32', 
+        'green'        => '32', 
         'lightgreen'   => '1;32',
-        'cyan'         => '0;36', 
+        'cyan'         => '36', 
         'lightcyan'    => '1;36',
-        'red'          => '0;31', 
+        'red'          => '31', 
         'lightred'     => '1;31',
-        'magenta'      => '0;35', 
+        'magenta'      => '35', 
         'lightmagenta' => '1;35',
-        'brown'        => '0;33', 
+        'brown'        => '33', 
         'yellow'       => '1;33',
     );
     

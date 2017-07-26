@@ -86,6 +86,8 @@ function writeHeader()
     Console::log(' '.Console::text('   --- Interactive ~Mishell^^ Console sample ---   ', 'white', 'cyan', 'bold'));
     Console::log(' '.Console::text('                                                   ', 'white', 'cyan', 'bold', 'underline'));
     Console::log();
+    Console::log('my string', 'blue', 'underline', 'none');    // Writes a text with no style at all (note the 'none' argument...)
+
 }
 
 function writeIndex()
