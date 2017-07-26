@@ -5,16 +5,16 @@
 
 Kristuff miShell 
 
-A mini PHP CLI app builder
+A mini PHP CLI app/report builder: 
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4fd3728ced2b4d95b0eb549db7a0053b)](https://www.codacy.com/app/kristuff_/mishell?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kristuff/patabase&amp;utm_campaign=Badge_Grade)
 [![Code Climate](https://codeclimate.com/github/kristuff/mishell/badges/gpa.svg)](https://codeclimate.com/github/kristuff/mishell)
 
-- [Features](#Features) 
-- [Requirements](#Requirements) 
-- [Install](Install) 
-- [Documentation](#Documentation) (external file) 
-- [License](#License) 
+- [Features](#features) 
+- [Requirements](#requirements) 
+- [Install](#install) 
+- [Documentation](../Documentation) (external file) 
+- [License](#license) 
 
 
 Features
@@ -46,20 +46,31 @@ Install
 }
 ```
 
-- From command line:
-```bash
-composer require kristuff/mishell
-// or clone this project if wou want to play with the demo
-// git clone https://github.com/kristuff/mishell.git
-cd mishell
-composer install
-```
+Run the sample
+--------
+![logo](doc/screenshots/index.png)
 
+- clone this project (demo and doc is exclude from dist)
+```bash
+$ git clone https://github.com/kristuff/mishell.git
+```
+- go to mishell folder
+```bash
+$ cd mishell
+```
+- install 
+```bash
+$ composer install
+```
+- run sample
+```bash
+$ php demo/index.php
+```
 
 Documentation
 --------
 
-
+...TODO...
 
 -  `Console::text($str, [styles])`  
     Gets a formatted string to be returned in the console 

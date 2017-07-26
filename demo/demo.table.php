@@ -3,10 +3,6 @@
 require_once __DIR__ .'/../vendor/autoload.php';
 use Kristuff\Mishell\Console;
 
-require_once __DIR__ .'/index.inc.php';
-
-
-
 Console::log('Basic sample', 'white', 'magenta');
 Console::log();
 

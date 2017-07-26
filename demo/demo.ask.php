@@ -11,8 +11,12 @@ Console::log("  - you can customize colors (foreground and background) and some 
 Console::log("    and Console::log() methods.", 'green');
 Console::log('');
 Console::log('Usage:', 'underline', 'bold');
-Console::log('TODO', 'white', 'red');
+Console::log('   '. Console::text("\$value = Console::ask('Please enter something > ');", 'blue', 'white'));
+Console::log('   '. Console::text("\$value2 = Console::ask('Please enter something > ', 'blue', 'white', 'underline');", 'blue', 'white'));
 Console::log('');
 
-$value = Console::ask('Please enter something: ');
+$value = Console::ask('Please enter something > ');
 Console::log('=> the value you entered is [' . Console::text($value, 'yellow') . ']');
+
+$value2 = Console::ask('Please enter something > ', 'blue', 'white', 'underline');
+Console::log('=> the value you entered is [' . Console::text($value2, 'yellow') . ']');

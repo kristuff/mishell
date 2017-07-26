@@ -1,4 +1,4 @@
-    <?php
+<?php
 require_once __DIR__ .'/../vendor/autoload.php';
 use Kristuff\Mishell\Console;
 
@@ -11,7 +11,7 @@ Console::log('  '.Console::tableRowEmpty($rowHeaders));
 
 $i = 1;
 
-foreach (Console::$backgroundColors as $color => $colorValue ){
+foreach (Console::getStyles()['backgrounds'] as $color => $colorValue ){
     Console::log('  '.Console::tableRow([
        ' ' . $i     => 7,
         $color        => 15, 

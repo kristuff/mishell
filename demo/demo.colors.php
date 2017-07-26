@@ -12,7 +12,7 @@ Console::log('  '.Console::tableRowEmpty($rowHeaders));
 
 $i = 1;
 
-foreach (Console::$foregroundColors as $color => $colorValue ){
+foreach (Console::getStyles()['foregrounds'] as $color => $colorValue ){
     Console::log('  '.Console::tableRow([
        ' ' . $i     => 7,
         $color        => 15, 

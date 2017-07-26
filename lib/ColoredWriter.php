@@ -30,7 +30,7 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
      * @static var
      * @var    array
      */
-    public static $foregroundColors = array(
+    protected static $foregroundColors = array(
         'normal'       => '0;39',   // your default color
         'black'        => '0;30', 
         'gray'         => '1;30',
@@ -57,7 +57,7 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
      * @static var
      * @var    array
      */
-    public static $backgroundColors = array(
+    protected static $backgroundColors = array(
         'black'        => '40',   
         'red'          => '41',
         'green'        => '42',   
@@ -75,15 +75,32 @@ abstract class ColoredWriter extends \Kristuff\Mishell\BaseWriter
      * @static var
      * @var    array
      */
-    public static $options = array(
+    protected static $options = array(
         'none'         => '0',    // reset all styles
         'bold'         => '1',
         'underline'    => '4',    
         'blink'        => '5', 
         'reverse'      => '7', 
     );
+    
+    /**
+     * Get an array of all available styles
+     *
+     * @access public
+     * @static method
+     *
+     * @return array
+     */
+    public static function getStyles()
+    {
+        return [
+            'foregrounds'   => self::$foregroundColors,
+            'backgrounds'   => self::$backgroundColors,
+            'options'       => self::$options
+        ];
+    }
 
-     /**
+    /**
      * Internal method dispatcher
      *
      * @access protected

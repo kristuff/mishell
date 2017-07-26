@@ -12,7 +12,7 @@ Console::log('  '.Console::tableRowEmpty($rowHeaders));
 
 $i = 1;
 
-foreach (Console::$options as $option => $value){
+foreach (Console::getStyles()['options'] as $option => $value){
     Console::log('  '.Console::tableRow([
        ' ' . $i     => 7,
         $option        => 15, 
