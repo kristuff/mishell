@@ -1,6 +1,5 @@
 
 ![logo](doc/screenshots/loading.png)
-![logo](doc/screenshots/backgrounds.png)
 
 # Kristuff miShell 
 
@@ -17,6 +16,7 @@
 - [Documentation](#documentation) *in progress...*
 - [License](#license) 
 
+![logo](doc/screenshots/backgrounds.png)
 
 Features
 --------
