@@ -16,6 +16,7 @@
 - [Documentation](#documentation) *in progress...*
 - [License](#license) 
 
+![logo](doc/screenshots/backgrounds.png)
 
 Features
 --------

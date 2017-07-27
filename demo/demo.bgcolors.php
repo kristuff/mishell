@@ -10,13 +10,13 @@ Console::log('  '.Console::tableRowSeparator($rowHeaders));
 Console::log('  '.Console::tableRowEmpty($rowHeaders));
 
 $i = 1;
-
-foreach (Console::getStyles()['backgrounds'] as $color => $colorValue ){
+foreach (Console::getStyles()['backgrounds'] as $bgcolor => $colorValue ){
+    $foregroundColor = $bgcolor === 'black' ? 'white': 'black';
     Console::log('  '.Console::tableRow([
        ' ' . $i     => 7,
-        $color        => 15, 
+        $bgcolor        => 15, 
        "\\033[" . $colorValue  .'m'  => 15, 
-        Console::text(str_pad('I am a text color={normal} bgcolor={' . $color .'}', 48),  'normal', $color) => 50
+        Console::text(str_pad('I am a text color={' . $foregroundColor .'} on bgcolor={' . $bgcolor .'}', 48), $foregroundColor , $bgcolor) => 50
     ]));
     $i++;
 }
