@@ -1,5 +1,6 @@
 
 ![logo](doc/screenshots/loading.png)
+![logo](doc/screenshots/backgrounds.png)
 
 # Kristuff miShell 
 

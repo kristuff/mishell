@@ -188,7 +188,7 @@ function askIndex()
                     Console::log($base . Console::text('End running [', 'white')  .
                                      Console::text( $title, 'lightcyan') . 
                                      Console::text(']', 'white')); 
-                    $response = Console::ask($base . Console::text('Do you want to see the complete that has been executed? (type y/Y to see the code) > ', 'white'));
+                    $response = Console::ask($base . Console::text('Do you want to see the code that has been executed? (type y/Y to see the code) > ', 'white'));
                      if (strtoupper($response) === 'Y') {
                         Console::log($base . Console::text('The code in file [', 'white')  .
                                      Console::text( $fileName, 'lightcyan') . 
