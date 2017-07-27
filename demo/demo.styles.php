@@ -19,6 +19,7 @@ foreach (Console::getStyles()['options'] as $option => $value){
        "\\033[" . $value  .'m'  => 15, 
         Console::text(str_pad('I am a text style={' . $option .'}', 48), $option) => 50
     ]));
+    Console::log('  '.Console::tableRowEmpty($rowHeaders)); // add blank row between element 
     $i++;
 }
 Console::log('  '.Console::tableRowEmpty($rowHeaders));

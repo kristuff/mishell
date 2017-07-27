@@ -23,30 +23,88 @@ namespace Kristuff\Mishell;
  
 abstract class ShellTableWriter extends \Kristuff\Mishell\ShellColoredWriter 
 {
-    const ALIGN_LEFT   = STR_PAD_RIGHT;
-    const ALIGN_RIGHT  = STR_PAD_LEFT;
+    /**
+     * Align left constant
+     *
+     * @const    int
+     */
+    const ALIGN_LEFT = STR_PAD_RIGHT;
+
+    /**
+     * Align right constant
+     *
+     * @const    int
+     */
+    const ALIGN_RIGHT = STR_PAD_LEFT;
+
+    /**
+     * Align center constant
+     *
+     * @const    int
+     */
     const ALIGN_CENTER = STR_PAD_BOTH;
 
-    public static $tableHorizontalSeparator                    = '-';
-    protected static $_defaultTableHorizontalSeparator         = '-';
-    public static $tableVerticalSeparator                 = '|';
-    protected static $_defaultTableVerticalSeparator      = '|';
-    public static $tableCellPadding                     = ' ';
-    protected static $_defaultTableCellPadding          = ' ';
+    /**
+     * The default horizontal sign. 
+     *
+     * @access protected
+     * @var    string
+     */
+    protected static $defaultHorizontalSign = '-';
+
+    /**
+     * The default vertical sign. 
+     *
+     * @access protected
+     * @var    string
+     */
+    protected static $defaultVerticalSign = '|';
+
+    /**
+     * The default table cell padding. 
+     *
+     * @access protected
+     * @var    string
+     */
+    protected static $defaultCellPadding = ' ';
+
+    /**
+     * The cell padding. 
+     *
+     * @access public
+     * @var    string
+     */
+    public static $tableCellPadding    = ' ';
+
+    /**
+     * The horizontal separator sign. 
+     *
+     * @access public
+     * @var    string
+     */
+    public static $horizontalSeparator = '-';
+
+    /**
+     * The vertical separator sign. 
+     *
+     * @access public
+     * @var    string
+     */
+    public static $verticalSeparator   = '|';
        
     /**
-     * Resets the default table options
+     * Resets the default options
      *
      * @access public
      * @static method
      *
      * @return void         
      */
-    public static function tableResetDefaults()
+    public static function resetDefaults()
     {
-        self::$tableHorizontalSeparator = self::$_defaultTableHorizontalSeparator;
-        self::$tableVerticalSeparator   = self::$_defaultTableVerticalSeparator;
-        self::$tableCellPadding         = self::$_defaultTableCellPadding;
+        self::$verticalSeparator   = self::$defaultVerticalSign;
+        self::$horizontalSeparator = self::$defaultHorizontalSign;
+        self::$tableCellPadding    = self::$defaultCellPadding;
     }
 
     /**
@@ -54,25 +112,36 @@ abstract class ShellTableWriter extends \Kristuff\Mishell\ShellColoredWriter
      *
      * @access public
      * @static method
+     * @param  string   [$color]        The text color for the wall row
+     * @param  string   [$bgcolor]      The back color for the wall row
+     * @param  string   [$option]+...   The text styles for the wall row
      *
-     * @return void         
+     * @return string         
      */
-    public static function TableRowSeparator()
+    public static function tableRowSeparator()
     {
         $args = func_get_args();
         $columnsPads = !empty($args) ? $args[0] : [];
         array_shift($args);
 
-        $str = self::$tableVerticalSeparator ;
+        $str = self::$verticalSeparator ;
         $cellPaddingLenght = strlen(self::$tableCellPadding) *2;
         foreach ($columnsPads as $key => $pad){
-            $str .= str_repeat(self::$tableHorizontalSeparator, $pad + $cellPaddingLenght) .self::$tableVerticalSeparator ;
+            $str .= str_repeat(self::$horizontalSeparator , $pad + $cellPaddingLenght) .self::$verticalSeparator ;
         }
         return self::getCliString($str, $args);
     }
 
     /**
+     * Gets a formated table blank row 
      *
+     * @access public
+     * @static method
+     * @param  string   [$color]        The text color for the wall row
+     * @param  string   [$bgcolor]      The back color for the wall row
+     * @param  string   [$option]+...   The text styles for the wall row
+     *
+     * @return string         
      */
     public static function tableRowEmpty()
     {
@@ -83,39 +152,61 @@ abstract class ShellTableWriter extends \Kristuff\Mishell\ShellColoredWriter
         $columnsPads = !empty($args) ? $args[0] : [];
         array_shift($args);
 
-        $str = self::$tableVerticalSeparator ;
+        $str = self::$verticalSeparator ;
         foreach ($columnsPads as $pad){
             $str .= self::$tableCellPadding. 
                     str_pad(' ', $pad).
                     self::$tableCellPadding. 
-                    self::$tableVerticalSeparator ;
+                    self::$verticalSeparator ;
         }
         return self::getCliString($str, $args);
     }
 
     /**
+     * Return a table row start.  
      *
+     * @access public
+     * @static method
+     *
+     * @return void         
      */
     public static function tableRowStart()
     {
-        return self::$tableVerticalSeparator;
+        return self::$verticalSeparator;
     }
 
     /**
+     * Return a table cell string.
      *
+     * @access public
+     * @static method
+     * @param  string   $column         The column text. 
+     * @param  int      $lenght         The column length. Default is 0 (no pad)
+     * @param  int      $align          The column alignement (Console::ALIGN_LEFT, Console::ALIGN_RIGHT or Console::ALIGN_CENTER). Default is Console::ALIGN_LEFT.
+     *
+     * @return string          
      */
     public static function tableRowCell($column, $length = 0, $align = self::ALIGN_LEFT)
     {
         return  self::$tableCellPadding. 
                 self::pad($column, $length, ' ', $align).
                 self::$tableCellPadding. 
-                self::$tableVerticalSeparator;
+                self::$verticalSeparator;
     }
 
     /**
+     * Return a table row string.
      *
+     * @access public
+     * @static method
+     * @param  array    $columns        The columns arrays. 
+     * @param  string   [$color]        The text color for the wall row
+     * @param  string   [$bgcolor]      The back color for the wall row
+     * @param  string   [$option]+...   The text styles for the wall row
+     *
+     * @return string          
      */
-    public static function tableRow()
+     public static function tableRow()
     {
         // get and parse arguments:
         //  - extract first argument (columns list)
@@ -126,14 +217,14 @@ abstract class ShellTableWriter extends \Kristuff\Mishell\ShellColoredWriter
 
         // build the row string
         // start with separator
-        $str = self::$tableVerticalSeparator;
+        $str = self::$verticalSeparator;
 
         // add columns        
         foreach ($columns as $column => $pad){
             $str .= self::$tableCellPadding. 
                     self::pad($column, $pad).
                     self::$tableCellPadding.
-                    self::$tableVerticalSeparator;
+                    self::$verticalSeparator;
         }
 
         // format full row
