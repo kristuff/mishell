@@ -77,10 +77,10 @@ abstract class ShellColoredWriter extends \Kristuff\Mishell\ShellWriter
      */
     protected static $options = array(
         'none'         => '0',    // reset all styles
-        'bold'         => '1',
+        'bold'         => '1',    // 
         'underline'    => '4',    
         'blink'        => '5', 
-        'reverse'      => '7', 
+        'reverse'      => '7',    // reverse foreground/background color
     );
     
     /**
@@ -147,23 +147,23 @@ abstract class ShellColoredWriter extends \Kristuff\Mishell\ShellWriter
             // ****************************************
 
             case'ask':
-                echo (self::getCliString($str, $args));       // write question
+                echo (self::getCliString($str, $args));     // write question
                 return trim(fgets(STDIN));                  // reads and return one line from STDIN 
            
             case'askPassword':
                 self::hideInput();                          // hide 
-                echo (self::getCliString($str, $args));       // write question
+                echo (self::getCliString($str, $args));     // write question
                 $line= trim(fgets(STDIN));                  // reads one line from STDIN 
                 self::restoreInput();                       // restore 
                 return $line;                               // return line
                 
             case 'askInt':
-                echo (self::getCliString($str, $args));       // write question
+                echo (self::getCliString($str, $args));     // write question
                 fscanf(STDIN, "%d\n", $number);             // reads number from STDIN
                 return (is_int($number) ? $number : false); // return int value or false
-                
-
         }
+
+        // nothing found
         return null;
     }
       

@@ -122,7 +122,7 @@ Console::write('my string', 'blue', 'underline', 'none');             // Writes 
 ### 1.2 Known foreground colors
 
 Name            |  ANSI Code 
---------------- | --------:  
+--------------- | --------  
 normal          | \033[39m       
 black           | \033[30m  
 gray            | \033[1;30m 
@@ -144,7 +144,7 @@ yellow          | \033[1;33m
 ### 1.3 Known background colors
 
 Name            |  ANSI Code 
---------------- | --------:  
+--------------- | --------  
 black           | \033[40m 
 red             | \033[41m 
 green           | \033[42m 
@@ -157,7 +157,7 @@ white           | \033[47m
 ### 1.4 Known options
 
 Name            |  ANSI Code 
---------------- | --------:  
+--------------- | --------  
 none            | \033[0m       
 bold            | \033[1m 
 underline       | \033[4m 
@@ -194,6 +194,7 @@ Method | Description | Return | Note
 
 Method | Description | Return | Note
 --- | --- | --- | ---
+`Console::clear()`                      | Clear the console.                | `void` |
 `Console::bell()`                       | Play the bell if available.       | `void` |
 `Console::newWindow()`                  | Switch to a new window            | `void` |
 `Console::restoreWindow()`              | Restore the previous window       | `void` |

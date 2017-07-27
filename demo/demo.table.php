@@ -52,7 +52,7 @@ $rows = [
     ],
     [
         Console::text('foobar (on right)', 'white'),    
-        'some centered text ' .Console::text('on Blue', 'white', 'blue'). ' for foobar' 
+        'some centered text ' .Console::text('on BLUE here', 'white', 'blue'). ' for foobar' 
     ]
 ];
 
