@@ -41,15 +41,12 @@ function writeLoader()
                             Console::text('] completed', 'white'));
 
         // wait for a while, so we see the animation
-        usleep(35000); 
+        usleep(25000); 
     }
     // Overwrite progress message. 
-    // note: you may need to use str_pad() method to be sure all previous text is overwitted.
     Console::relog($pad.Console::text('Done!', 'white', 'green', 'underline').str_pad(' ', 150));
-    Console::log('');
-    Console::log('');
-    usleep(35000); 
-
+    usleep(45000); 
+    Console::clear();
 }
 
 function getIndex()
@@ -69,9 +66,9 @@ function getIndex()
     $index[16] =  ['Progress',      'How to output progress message?',                  'demo.progress.php'];
     $index[17] =  ['New window',    'How to open new/restore window?',                  'demo.window.php'];
 
-    $index[4] = ['Text',  'Console::text() overview',    'demo.log.php'];      //TODO
-    $index[5] = ['Log',   'Console::log() overview',     'demo.log.php'];      //TODO
-    $index[6] = ['ReLog', 'Console::relog() overview',   'demo.relog.php'];    // TODO
+//  $index[4] = ['Text',  'Console::text() overview',    'demo.log.php'];      
+//  $index[5] = ['Log',   'Console::log() overview',     'demo.log.php'];      
+//  $index[6] = ['ReLog', 'Console::relog() overview',   'demo.relog.php'];    
     $index[7] = ['Pad',   'Console::pad() overview',     'demo.pad.php'];
   
     return $index;
@@ -88,6 +85,15 @@ function writeHeader()
     Console::log();
 }
 
+function writeSampleHeader($index, $title)
+{
+    Console::log('      ' . Console::text(Console::pad('',      20, ' ', STR_PAD_BOTH), 'white', 'bold', 'underline'));
+    Console::log('      ' . Console::text(Console::pad('',      20, ' ', STR_PAD_BOTH), 'white', 'yellow', 'bold'));
+    Console::log('      ' . Console::text(Console::pad($index .' - ' . $title,  20, ' ', STR_PAD_BOTH), 'white', 'yellow', 'bold'));
+    Console::log('      ' . Console::text(Console::pad('',      20, ' ', STR_PAD_BOTH), 'white', 'yellow', 'bold', 'underline'));
+    Console::log();
+}
+
 function writeIndex()
 {
     Console::log(' '. Console::text('Index:', 'underline', 'bold'));
@@ -95,21 +101,21 @@ function writeIndex()
 
     // customize table separator
     // customize table row style (color, bg...)
-    Console::$tableVerticalSeparator = '';
-    Console::$tableHorizontalSeparator = ' ';
+    Console::$verticalSeparator = '';
+    Console::$horizontalSeparator = ' ';
 
     //Console::log(' '.Console::tableRowSeparator($rowHeaders, 'gray'));
 
-    Console::$tableHorizontalSeparator = '_';
+    Console::$horizontalSeparator = '_';
     Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'bold'));
 
-    Console::$tableHorizontalSeparator = ' ';
-    //Console::$tableVerticalSeparator = '|';
+    Console::$horizontalSeparator = ' ';
+    //Console::$verticalSeparator = '|';
     Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'magenta', 'bold'));
 
 
     Console::log(' '.Console::tableRow($rowHeaders, 'white', 'magenta', 'bold'));
-    Console::$tableHorizontalSeparator = '_';
+    Console::$horizontalSeparator = '_';
     Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'magenta', 'bold'));
     Console::log(' '.Console::tableRowEmpty($rowHeaders, 'black', 'white'));
 
@@ -135,7 +141,7 @@ function writeIndex()
     Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'white', 'bold'));
 
     // reset table sseparators to defaults
-    Console::tableResetDefaults();
+    Console::resetDefaults();
 
     // --------------------
 
@@ -164,6 +170,7 @@ function askIndex()
                 writeHeader();
                 Console::log($base . Console::text('Start running [' . $index[$selectedIndex][0] . ']' , 'white'));
                 Console::log();
+                writeSampleHeader($selectedIndex, $index[$selectedIndex][0]);
 
                 $script = __DIR__ . '/'. $index[$selectedIndex][2];
                 if (file_exists($script)){
