@@ -28,7 +28,7 @@ function askNumber()
     
     } else {
         Console::log(Console::text('Error:', 'red'));
-        Console::log(Console::text('=> the value you entered is not a valid index number.', 'red'));
+        Console::log(Console::text('=> the value you entered is not a valid number.', 'red'));
         // retry...
         askNumber();    
     }

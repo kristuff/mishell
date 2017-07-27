@@ -166,20 +166,51 @@ function askIndex()
 
         default:
             if (array_key_exists($selectedIndex, getIndex())) {
+
+                $title      = $index[$selectedIndex][0];
+                $fileName   = $index[$selectedIndex][2];
+                $filePath   = __DIR__ . '/'. $fileName;
+                
                 Console::clear();
                 writeHeader();
-                Console::log($base . Console::text('Start running [' . $index[$selectedIndex][0] . ']' , 'white'));
-                Console::log();
-                writeSampleHeader($selectedIndex, $index[$selectedIndex][0]);
+                writeSampleHeader($selectedIndex, $title);
 
-                $script = __DIR__ . '/'. $index[$selectedIndex][2];
-                if (file_exists($script)){
-                    include $script;
+                Console::log($base . Console::text('Start running [', 'white') . 
+                                     Console::text( $title, 'lightcyan') . 
+                                     Console::text('] in file [', 'white')  .
+                                     Console::text( $fileName, 'lightcyan') . 
+                                     Console::text(']', 'white'));
+
+                if (file_exists($filePath)){
                     Console::log();
-                    Console::log($base . Console::text('End running [' . $index[$selectedIndex][0] . ']' , 'white'));
+                    include $filePath;
+                    Console::log();
+                    Console::log($base . Console::text('End running [', 'white')  .
+                                     Console::text( $title, 'lightcyan') . 
+                                     Console::text(']', 'white')); 
+                    $response = Console::ask($base . Console::text('Do you want to see the complete that has been executed? (type y/Y to see the code) > ', 'white'));
+                     if (strtoupper($response) === 'Y') {
+                        Console::log($base . Console::text('The code in file [', 'white')  .
+                                     Console::text( $fileName, 'lightcyan') . 
+                                     Console::text('] is:', 'white')); 
+                        Console::log();
+
+                        $lines = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+                        $count = 1;
+                        foreach($lines as $line){
+                            $codeLine = rtrim($line);
+                            $isComment = substr(ltrim($codeLine), 0, 2) === '//';
+                            Console::log(
+                                Console::pad($count . ' ', 3, ' ', STR_PAD_LEFT) . 
+                                Console::text(Console::pad($codeLine, 150), $isComment ? 'magenta' : 'black', 'white')
+                            );
+                            $count++;
+                        }
+                        Console::log();
+                    }
                } else {
                     Console::log($base . Console::text('Error' , 'red'));
-                    Console::log($base . Console::text(' => File missing [' . $script . ']' , 'red'));
+                    Console::log($base . Console::text(' => File missing [' . $fileName . ']' , 'red'));
                }
 
             } else {
