@@ -182,25 +182,27 @@ Method | Description | Return| Note
 Method | Description | Return | Note
 --- | --- | --- | ---
 `Console::text($str, [styles])`         | Gets a [formatted] string to be returned in the console. | `string` |
-`Console::pad(TODO)`                    | TODO | `string` | 
-`Console::tableRow(TODO)`               | TODO | `string` | 
-`Console::tableRowStart(TODO)`          | TODO | `string` | 
-`Console::tableRowEmpty(TODO)`          | TODO | `string` | 
-`Console::tableRowSeparator(TODO)`      | TODO | `string` | 
-`Console::tableRowCell(TODO)`           | TODO | `string` | 
-`Console::tableResetDefaults(TODO)`     | TODO | `void`   | 
+`Console::pad(TODO)`                    | TODO      | `string` | 
+`Console::tableRow(TODO)`               | TODO      | `string` | 
+`Console::tableRowStart(TODO)`          | TODO      | `string` | 
+`Console::tableRowEmpty(TODO)`          | TODO      | `string` | 
+`Console::tableRowSeparator(TODO)`      | TODO      | `string` | 
+`Console::tableRowCell(TODO)`           | TODO      | `string` | 
+`Console::tableResetDefaults(TODO)`     | TODO      | `void`   | 
 
 
 ### 2.3 Misc
 
 Method | Description | Return | Note
 --- | --- | --- | ---
-`Console::clear()`                      | Clear the console.                | `void` |
-`Console::bell()`                       | Play the bell if available.       | `void` |
-`Console::newWindow()`                  | Switch to a new window            | `void` |
-`Console::restoreWindow()`              | Restore the previous window       | `void` |
-`Console::HideInput()`                  | Hide user input in window         | `void` | **Not supported** on windows platform
-`Console::restoreInput()`               | Restore user input window         | `void` | **Not supported** on windows platform
+`Console::clear()`                      | Clear the console.                    | `void` |
+`Console::bell()`                       | Play the bell if available.           | `void` |
+`Console::newWindow()`                  | Switch to a new window                | `void` |
+`Console::restoreWindow()`              | Restore the previous window           | `void` |
+`Console::HideInput()`                  | Hide user input in window             | `void` | **Not supported** on windows platform
+`Console::restoreInput()`               | Restore user input window             | `void` | **Not supported** on windows platform
+`Console::getLines()`                   | Get the number of colums in terminal  | `int`  | **Not supported** on windows platform
+`Console::getColumns()`                 | Get the number of colums in terminal  | `int`  | **Not supported** on windows platform
 
 [...] TODO 
 + tables methods
