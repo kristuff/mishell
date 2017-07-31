@@ -12,7 +12,7 @@ $rows = [
     ['bar',       'some text for bar'],
     ['foobar',    'some text for foobar']
 ];
-Console::log(Console::tableRowSeparator($rowHeaders));
+Console::log(Console::tableSeparator($rowHeaders));
 Console::log(Console::tableRow($rowHeaders));
 Console::log(Console::tableRowSeparator($rowHeaders));
 
@@ -23,7 +23,7 @@ foreach ($rows as $key => $value){
         $rows[$key][1]  => 50
     ]));
 }
-Console::log(Console::tableRowSeparator($rowHeaders));
+Console::log(Console::tableSeparator($rowHeaders));
 
 Console::log();
 Console::log();
@@ -62,7 +62,7 @@ $rows = [
 Console::$tableCellPadding = '  '; // increase cell padding to 2 white chars (default is 1)
 
 // table start
-Console::log(Console::tableRowSeparator($rowHeaders)); // top line             |---------|---------|---  ...
+Console::log(Console::tableSeparator($rowHeaders));    // top line             |-----------------------  ...
 Console::log(Console::tableRow($rowHeaders));          // columns headers      | foo     | bar     |---  ...
 Console::log(Console::tableRowSeparator($rowHeaders)); // saparator            |---------|---------|---  ...
 Console::log(Console::tableRowEmpty($rowHeaders));     // empty row            |         |         |     ...
@@ -80,5 +80,5 @@ foreach ($rows as $key => $value){
 
 // table end
 Console::log(Console::tableRowEmpty($rowHeaders));     // empty row            |         |         |     ...
-Console::log(Console::tableRowSeparator($rowHeaders)); // saparator            |---------|---------|---  ...
+Console::log(Console::tableSeparator($rowHeaders)); // saparator               |-----------------------  ...
 

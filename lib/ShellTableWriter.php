@@ -132,6 +132,32 @@ abstract class ShellTableWriter extends \Kristuff\Mishell\ShellColoredWriter
         return self::getCliString($str, $args);
     }
 
+     /**
+     * Gets a formated table row separator
+     *
+     * @access public
+     * @static method
+     * @param  string   [$color]        The text color for the wall row
+     * @param  string   [$bgcolor]      The back color for the wall row
+     * @param  string   [$option]+...   The text styles for the wall row
+     *
+     * @return string         
+     */
+    public static function tableSeparator()
+    {
+        $args = func_get_args();
+        $columnsPads = !empty($args) ? $args[0] : [];
+        array_shift($args);
+
+        $str = self::$verticalSeparator ;
+        $cellPaddingLenght = strlen(self::$tableCellPadding) *2;
+        foreach ($columnsPads as $key => $pad){
+            $str .= str_repeat(self::$horizontalSeparator , $pad + $cellPaddingLenght) .self::$horizontalSeparator;
+        }
+        return self::getCliString(substr($str, 0, strlen($str) -1). self::$verticalSeparator, $args);
+    }
+
+
     /**
      * Gets a formated table blank row 
      *

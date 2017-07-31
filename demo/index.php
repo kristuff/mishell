@@ -71,6 +71,7 @@ function getIndex()
 //  $index[6] = ['ReLog', 'Console::relog() overview',   'demo.relog.php'];    
     $index[7] = ['Pad',   'Console::pad() overview',     'demo.pad.php'];
     $index[8] = ['Size',  'How to get the number of columns and lines in terminal',     'demo.size.php'];
+    $index[9] = ['BlueScreen',  'Really nice full screen centered message sample',     'demo.bluescreen.php'];
   
     return $index;
 }
