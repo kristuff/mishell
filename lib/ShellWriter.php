@@ -46,6 +46,34 @@ abstract class ShellWriter
     }
 
     /**
+     * Get the number of columns in terminal
+     *
+     * @access public
+     * @static method
+     *
+     * @return int
+     */
+    public static function getColumns() {
+        if (!self::isWin() ){
+            return (int) shell_exec('tput cols');
+        }
+    }
+
+    /**
+     * Get the number of lines in terminal
+     *
+     * @access public
+     * @static method
+     *
+     * @return int
+     */
+    public static function getLines() {
+        if (!self::isWin() ){
+            return (int) shell_exec('tput lines');
+        }
+    }
+
+    /**
      * Switch to new window
      *
      * @access public

@@ -45,9 +45,10 @@ Console::log(Console::text('         NEW WINDOW 2        ', 'white', 'yellow', '
 Console::log(Console::text('_____________________________', 'white', 'yellow', 'bold'));
 Console::log();
 
-
 Console::log('I am in new window. We will restore the window later using ' .  Console::text('Console::restoreWindow()', 'blue', 'white') . ' method.' );
 Console::ask('Press [Enter] to restore >');
+
+
 
 // restore new window
 Console::restoreWindow();

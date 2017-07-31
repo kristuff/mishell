@@ -19,7 +19,6 @@ Console::log('   ' . Console::text(Console::pad("Console::log();", 80), 'blue', 
 Console::log('   ' . Console::text(Console::pad("Console::log('=> the value you entered is [' . Console::text(\$value, 'red') . ']');", 80), 'blue', 'white')); 
 Console::log('');
 Console::log('Sample:', 'underline', 'bold');
-
 $value = Console::askPassword('Please Enter something (We wont display it, for now...)  > ');
 Console::log();
 Console::log('=> the value you entered is [' . Console::text($value, 'red') . ']');
