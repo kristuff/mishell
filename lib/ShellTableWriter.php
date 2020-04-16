@@ -1,13 +1,11 @@
 <?php
 
-/* --------------------------------------
- *             _   ____  _          _ _
- *   _ __ ___ (_) / ___|| |__   ___| | |
- *  | '_ ` _ \| | \___ \| '_ \ / _ \ | |
- *  | | | | | | |  ___) | | | |  __/ | |
- *  |_| |_| |_|_| |____/|_| |_|\___|_|_|
- *
- * --------------------------------------
+/* 
+ *   __  __  _       _            _  _
+ *  |  \/  |(_) ___ | |__    ___ | || |
+ *  | |\/| || |/ __|| '_ \  / _ \| || |
+ *  | |  | || |\__ \| | | ||  __/| || |
+ *  |_|  |_||_||___/|_| |_| \___||_||_|
  *
  * This file is part of Kristuff\Mishell.
  * (c) Kristuff <contact@kristuff.fr>
@@ -15,8 +13,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @version    0.1.0
- * @copyright  2017 Kristuff
+ * @version    0.2.0
+ * @copyright  2017-2020 Kristuff
  */
 
 namespace Kristuff\Mishell;
@@ -60,6 +58,14 @@ abstract class ShellTableWriter extends \Kristuff\Mishell\ShellColoredWriter
      */
     protected static $defaultVerticalSign = '|';
 
+     /**
+     * The default vertical sign. 
+     *
+     * @access protected
+     * @var    string
+     */
+    protected static $defaultVerticalInnerSign = '+';
+
     /**
      * The default table cell padding. 
      *
@@ -91,7 +97,15 @@ abstract class ShellTableWriter extends \Kristuff\Mishell\ShellColoredWriter
      * @var    string
      */
     public static $verticalSeparator   = '|';
-       
+
+   /**
+     * The vertical separator sign. 
+     *
+     * @access public
+     * @var    string
+     */
+    public static $verticalInnerSeparator   = '+';
+           
     /**
      * Resets the default options
      *
@@ -102,9 +116,10 @@ abstract class ShellTableWriter extends \Kristuff\Mishell\ShellColoredWriter
      */
     public static function resetDefaults()
     {
-        self::$verticalSeparator   = self::$defaultVerticalSign;
-        self::$horizontalSeparator = self::$defaultHorizontalSign;
-        self::$tableCellPadding    = self::$defaultCellPadding;
+        self::$verticalSeparator        = self::$defaultVerticalSign;
+        self::$horizontalSeparator      = self::$defaultHorizontalSign;
+        self::$tableCellPadding         = self::$defaultCellPadding;
+        self::$verticalInnerSeparator   = self::$defaultVerticalInnerSign;
     }
 
     /**
@@ -127,9 +142,10 @@ abstract class ShellTableWriter extends \Kristuff\Mishell\ShellColoredWriter
         $str = self::$verticalSeparator ;
         $cellPaddingLenght = strlen(self::$tableCellPadding) *2;
         foreach ($columnsPads as $key => $pad){
-            $str .= str_repeat(self::$horizontalSeparator , $pad + $cellPaddingLenght) .self::$verticalSeparator ;
+            $str .= str_repeat(self::$horizontalSeparator , $pad + $cellPaddingLenght) .self::$verticalInnerSeparator ;
         }
-        return self::getCliString($str, $args);
+
+        return self::getCliString(self::$verticalInnerSeparator === '' ? $str : substr($str, 0, strlen($str) -1). self::$verticalSeparator, $args);
     }
 
      /**

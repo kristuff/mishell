@@ -24,8 +24,8 @@ function writeLoader()
     Console::log('    '. Console::text("     | | | | | | | ", 'black', 'white') . Console::text("  ___) | | | |  __/ | |   ", 'magenta', 'white'));
     Console::log('    '. Console::text("     |_| |_| |_|_| ", 'black', 'white') . Console::text(" |____/|_| |_|\___|_|_|   ", 'magenta', 'white'));
     Console::log('    '. Console::text("                   ", 'black', 'white') . Console::text("                          ", 'magenta', 'white'));
-    Console::log('    '. Console::text("                   ", 'black', 'white') . Console::text("        Version 0.1       ", 'black', 'white'));
-    Console::log('    '. Console::text("                   ", 'black', 'white') . Console::text("        © 2017 Kristuff   ", 'black', 'white'));
+    Console::log('    '. Console::text("                   ", 'black', 'white') . Console::text("        Version 0.2       ", 'black', 'white'));
+    Console::log('    '. Console::text("                   ", 'black', 'white') . Console::text("        © 2020 Kristuff   ", 'black', 'white'));
     Console::log('    '. Console::text("                   ", 'black', 'white') . Console::text("                          ", 'magenta', 'white'));
     Console::log();
     Console::log();
@@ -69,9 +69,9 @@ function getIndex()
 //  $index[4] = ['Text',  'Console::text() overview',    'demo.log.php'];      
 //  $index[5] = ['Log',   'Console::log() overview',     'demo.log.php'];      
 //  $index[6] = ['ReLog', 'Console::relog() overview',   'demo.relog.php'];    
-    $index[7] = ['Pad',   'Console::pad() overview',     'demo.pad.php'];
+    $index[7] = ['Pad',             'Console::pad() overview',                          'demo.pad.php'];
     $index[8] = ['Size',  'How to get the number of columns and lines in terminal',     'demo.size.php'];
-    $index[9] = ['BlueScreen',  'Really nice full screen centered message sample',     'demo.bluescreen.php'];
+    $index[9] = ['BlueScreen',  'Really nice full screen centered message sample',      'demo.bluescreen.php'];
   
     return $index;
 }
@@ -104,6 +104,7 @@ function writeIndex()
     // customize table separator
     // customize table row style (color, bg...)
     Console::$verticalSeparator = '';
+    Console::$verticalInnerSeparator = '';
     Console::$horizontalSeparator = ' ';
 
     //Console::log(' '.Console::tableRowSeparator($rowHeaders, 'gray'));

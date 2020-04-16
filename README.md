@@ -5,7 +5,7 @@
 
 > A mini PHP library to build beautiful CLI apps and reports
 
-[![Codacy Badge](https://img.shields.io/codacy/grade/4fd3728ced2b4d95b0eb549db7a0053b.svg?style=flat-square)](https://www.codacy.com/app/kristuff_/mishell?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kristuff/patabase&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://img.shields.io/codacy/grade/4fd3728ced2b4d95b0eb549db7a0053b.svg?style=flat-square)](https://www.codacy.com/app/kristuff_/mishell?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kristuff/mishell&amp;utm_campaign=Badge_Grade)
 [![Code Climate](https://img.shields.io/codeclimate/github/kristuff/mishell.svg?style=flat-square)](https://codeclimate.com/github/kristuff/mishell)
 [![MIT Licence](https://img.shields.io/dub/l/vibe-d.svg?style=flat-square)]()
 
