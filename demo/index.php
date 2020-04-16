@@ -41,7 +41,7 @@ function writeLoader()
                             Console::text('] completed', 'white'));
 
         // wait for a while, so we see the animation
-        usleep(25000); 
+        usleep(20000); 
     }
     // Overwrite progress message. 
     Console::relog($pad.Console::text('Done!', 'white', 'green', 'underline').str_pad(' ', 150));

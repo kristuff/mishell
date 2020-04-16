@@ -13,7 +13,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @version    0.2.0
+ * @version    1.0.0 
  * @copyright  2017-2020 Kristuff
  */
 
@@ -51,7 +51,8 @@ abstract class ShellWriter
      *
      * @return int
      */
-    public static function getColumns() {
+    public static function getColumns() 
+    {
         if (!self::isWin() ){
             return (int) shell_exec('tput cols');
         }
@@ -65,7 +66,8 @@ abstract class ShellWriter
      *
      * @return int
      */
-    public static function getLines() {
+    public static function getLines() 
+    {
         if (!self::isWin() ){
             return (int) shell_exec('tput lines');
         }
@@ -79,7 +81,8 @@ abstract class ShellWriter
      *
      * @return void
      */
-    public static function newWindow() {
+    public static function newWindow() 
+    {
         if (!self::isWin() ){
             system('tput smcup');
             self::clear();
@@ -94,7 +97,8 @@ abstract class ShellWriter
      *
      * @return void
      */
-    public static function restoreWindow() {
+    public static function restoreWindow() 
+    {
         if (!self::isWin() ){
             system('tput rmcup');
         }
@@ -108,7 +112,8 @@ abstract class ShellWriter
      *
      * @return void
      */
-    public static function hideInput() {
+    public static function hideInput()
+    {
         if (!self::isWin() ){
             system('stty -echo');
         }
@@ -122,7 +127,8 @@ abstract class ShellWriter
      *
      * @return void
      */
-    public static function restoreInput() {
+    public static function restoreInput()
+    {
         if (!self::isWin()){
             system('stty echo');
         }

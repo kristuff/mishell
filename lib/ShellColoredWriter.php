@@ -13,7 +13,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @version    0.2.0
+ * @version    1.0.0 
  * @copyright  2017-2020 Kristuff
  */
 
