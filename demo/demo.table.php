@@ -58,6 +58,9 @@ $rows = [
 
 
 
+//Console::$verticalSeparator         = '!'; // change the vertical separator
+//Console::$verticalInnerSeparator    = '!'; // change the vertical inner separator
+//Console::$horizontalSeparator       = '_'; // change the horizontal separator
 
 Console::$tableCellPadding = '  '; // increase cell padding to 2 white chars (default is 1)
 
