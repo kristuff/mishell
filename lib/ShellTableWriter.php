@@ -13,7 +13,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @version    0.2.0
+ * @version    1.0.0
  * @copyright  2017-2020 Kristuff
  */
 
@@ -173,7 +173,6 @@ abstract class ShellTableWriter extends \Kristuff\Mishell\ShellColoredWriter
         return self::getCliString(substr($str, 0, strlen($str) -1). self::$verticalSeparator, $args);
     }
 
-
     /**
      * Gets a formated table blank row 
      *
@@ -272,5 +271,4 @@ abstract class ShellTableWriter extends \Kristuff\Mishell\ShellColoredWriter
         // format full row
         return self::getCliString($str, $args) ; 
     }
-
 }
