@@ -1,13 +1,16 @@
 
-![logo](doc/screenshots/loading.png)
-
-# Kristuff miShell 
+# Mishell 
 
 > A mini PHP library to build beautiful CLI apps and reports
 
 [![Codacy Badge](https://img.shields.io/codacy/grade/4fd3728ced2b4d95b0eb549db7a0053b.svg?style=flat-square)](https://www.codacy.com/app/kristuff_/mishell?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kristuff/mishell&amp;utm_campaign=Badge_Grade)
 [![Code Climate](https://img.shields.io/codeclimate/github/kristuff/mishell.svg?style=flat-square)](https://codeclimate.com/github/kristuff/mishell)
-[![MIT Licence](https://img.shields.io/dub/l/vibe-d.svg?style=flat-square)]()
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/kristuff/mishell/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/kristuff/mishell/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/kristuff/mishell/badges/build.png?b=master)](https://scrutinizer-ci.com/g/kristuff/mishell/build-status/master)
+[![Latest Stable Version](https://poser.pugx.org/kristuff/mishell/v/stable)](https://packagist.org/packages/kristuff/mishell)
+[![License](https://poser.pugx.org/kristuff/mishell/license)](https://packagist.org/packages/kristuff/mishell)
+
+![sample](doc/screenshots/mishell-demo.png)
 
 - [Features](#features) 
 - [Requirements](#requirements) 
@@ -15,8 +18,6 @@
 - [Run the sample](#run-the-sample) 
 - [Documentation](#documentation) *in progress...*
 - [License](#license) 
-
-![sample](doc/screenshots/mishell-demo.png)
 
 Features
 --------
@@ -42,7 +43,7 @@ Deploy with your project (in `composer.json`):
 {
     ...
     "require": {
-        "kristuff/mishell": "dev-master"
+        "kristuff/mishell": ">=1.0-stable"
     }
 }
 ```
@@ -59,7 +60,7 @@ Run the sample
     ```bash
     $ cd mishell
     ```
-- install (it just builds autoloader)
+- install (it just builds autoloader, no dependencies)
     ```bash
     $ composer install
     ```
@@ -92,6 +93,14 @@ The lib consists of one class `\Kristuff\Mishell\Console` that contains mainly 3
 - stylized/colorized CLI text builder methods : returns a formated string      
 - layout string builder methods (tables, padding) : returns a formated string
 
+Basic Example:
+```php
+Use Kristuff\Mishell\Console;
+$value = Console::askInt('Please enter a number > ');
+if ($value !== false){
+    Console::log('=> The value you entered is [' . Console::text($value, 'yellow') . ']');
+}
+```
 ### 1.1 Working with styles
 
 To be more flexible, most writing/text/layout builder methods take an indefinite number of arguments called `[styles]` in this documentation. 
@@ -105,17 +114,26 @@ So except for background that should be after foreground, style arguments order 
 
 Examples:
 ```php
-Console::write('my string', 'blue');                                  // writes a text color blue
-Console::write('my string', 'bold');                                  // writes a text style bold
-Console::write('my string', 'blue', 'underline');                     // writes a text color blue and style underline
-Console::write('my string', 'blue', 'white');                         // writes a text color blue on white
-Console::write('my string', 'blue', 'white', 'underline');            // writes a text color blue on white and style underline
-Console::write('my string', 'blue', 'white', 'underline', 'bold');    // writes a text color blue on white and styles underline+bold
-Console::write('my string', 'blue', 'white', 'reverse');              // writes a text color blue on white and style reverse (so => white on blue...)
-Console::write('my string', 'blue', 'white', 'underline');            // writes a text color blue on white and style underline (except background after foreground, args order does not matter)
-Console::write('my string', 'underline', 'blue', 'white');            // writes a text color blue on white and style underline (except background after foreground, args order does not matter)
-Console::write('my string', 'blue', 'underline', 'white');            // writes a text color blue on white and style underline (except background after foreground, args order does not matter)
-Console::write('my string', 'blue', 'underline', 'none');             // Writes a text with no style at all (note the 'none' argument at the end...)
+Use Kristuff\Mishell\Console;
+
+Console::write('some text', 'blue');                                // writes a blue text 
+Console::write('some text', 'bold');                                // writes a text style bold
+Console::write('some text', 'blue', 'underline');                   // writes a blue underlined text  
+Console::write('some text', 'blue', 'white');                       // writes a blue text on white
+Console::write('some text', 'blue', 'white', 'underline');          // writes a blue text on white and style underline
+Console::write('some text', 'blue', 'white', 'underline', 'bold');  // writes a blue text on white and styles underline+bold
+
+// writes a blue text on white and style reverse (so => white on blue...)
+Console::write('some text', 'blue', 'white', 'reverse');            
+
+// writes a blue text on white and style underline 
+// (except background after foreground, args order does not matter)
+Console::write('some text', 'blue', 'white', 'underline');            
+Console::write('some text', 'underline', 'blue', 'white');            
+Console::write('some text', 'blue', 'underline', 'white');            
+
+// Writes a text with no style at all (note the 'none' argument at the end...)
+Console::write('some text', 'blue', 'underline', 'none');            
 [...]
 //Got it?
 ```
@@ -181,7 +199,6 @@ Method | Description | Return| Note
 
 Method | Description | Return | Note
 --- | --- | --- | ---
-`Console::text($str, [styles])`         | Gets a [formatted] string to be returned in the console. | `string` |
 `Console::pad(TODO)`                    | TODO      | `string` | 
 `Console::tableRow(TODO)`               | TODO      | `string` | 
 `Console::tableRowStart(TODO)`          | TODO      | `string` | 
@@ -201,7 +218,7 @@ Method | Description | Return | Note
 `Console::restoreWindow()`              | Restore the previous window           | `void` |
 `Console::HideInput()`                  | Hide user input in window             | `void` | **Not supported** on windows platform
 `Console::restoreInput()`               | Restore user input window             | `void` | **Not supported** on windows platform
-`Console::getLines()`                   | Get the number of colums in terminal  | `int`  | **Not supported** on windows platform
+`Console::getLines()`                   | Get the number of lines in terminal   | `int`  | **Not supported** on windows platform
 `Console::getColumns()`                 | Get the number of colums in terminal  | `int`  | **Not supported** on windows platform
 
 [...] TODO 

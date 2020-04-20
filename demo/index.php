@@ -24,7 +24,7 @@ function writeLoader()
     Console::log('    '. Console::text("     | | | | | | | ", 'black', 'white') . Console::text("  ___) | | | |  __/ | |   ", 'magenta', 'white'));
     Console::log('    '. Console::text("     |_| |_| |_|_| ", 'black', 'white') . Console::text(" |____/|_| |_|\___|_|_|   ", 'magenta', 'white'));
     Console::log('    '. Console::text("                   ", 'black', 'white') . Console::text("                          ", 'magenta', 'white'));
-    Console::log('    '. Console::text("                   ", 'black', 'white') . Console::text("        Version 0.2       ", 'black', 'white'));
+    Console::log('    '. Console::text("                   ", 'black', 'white') . Console::text("        Version 1.0       ", 'black', 'white'));
     Console::log('    '. Console::text("                   ", 'black', 'white') . Console::text("        © 2020 Kristuff   ", 'black', 'white'));
     Console::log('    '. Console::text("                   ", 'black', 'white') . Console::text("                          ", 'magenta', 'white'));
     Console::log();
@@ -41,7 +41,7 @@ function writeLoader()
                             Console::text('] completed', 'white'));
 
         // wait for a while, so we see the animation
-        usleep(20000); 
+        usleep(15000); 
     }
     // Overwrite progress message. 
     Console::relog($pad.Console::text('Done!', 'white', 'green', 'underline').str_pad(' ', 150));
@@ -58,9 +58,11 @@ function getIndex()
     $index[1] =   ['Styles',        'How to get available basic styles',                'demo.styles.php'];
     $index[2] =   ['Colors',        'How to get available foreground colors',           'demo.colors.php'];
     $index[3] =   ['Backgrounds',   'How to get available background colors',           'demo.bgcolors.php'];
+   
     $index[11] =  ['Ask',           'How to ask? (get user input)',                     'demo.ask.php'];
     $index[12] =  ['Ask Number',    'How to ask and expect a number?',                  'demo.askint.php'];
     $index[13] =  ['Ask Password',  'How to ask a password? (do not print user input)', 'demo.askpassword.php'];
+   
     $index[14] =  ['Table',         'How to print a table?',                            'demo.table.php'];
     $index[15] =  ['Bell',          'How to run the bell?',                             'demo.bell.php'];
     $index[16] =  ['Progress',      'How to output progress message?',                  'demo.progress.php'];
@@ -114,13 +116,13 @@ function writeIndex()
 
     Console::$horizontalSeparator = ' ';
     //Console::$verticalSeparator = '|';
-    Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'magenta', 'bold'));
+    Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'blue', 'bold'));
 
 
-    Console::log(' '.Console::tableRow($rowHeaders, 'white', 'magenta', 'bold'));
+    Console::log(' '.Console::tableRow($rowHeaders, 'white', 'blue', 'bold'));
     Console::$horizontalSeparator = '_';
-    Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'magenta', 'bold'));
-    Console::log(' '.Console::tableRowEmpty($rowHeaders, 'black', 'white'));
+    Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'blue', 'bold'));
+    Console::log(' '.Console::tableRowEmpty($rowHeaders, 'white', 'cyan'));
 
     $i = 0;
     foreach (getIndex() as $key => $value){
@@ -132,8 +134,8 @@ function writeIndex()
                     $value[0]   => 25, 
                     $value[1]   => 70
                 ], 
-                    ($i % 2 == 1) ? 'black' :  'white',  
-                    ($i % 2 == 1) ? 'white' :  'cyan',
+                    ($i % 2 == 1) ? 'white' :  'white',  
+                    ($i % 2 == 1) ? 'cyan' :   'cyan',
                     ($i % 2 == 1) ? ''      :  'bold'
                 )
             );
@@ -141,7 +143,7 @@ function writeIndex()
         }
         
     }
-    Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'white', 'bold'));
+    Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'cyan', 'bold'));
 
     // reset table sseparators to defaults
     Console::resetDefaults();
