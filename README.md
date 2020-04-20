@@ -3,9 +3,8 @@
 
 > A mini PHP library to build beautiful CLI apps and reports
 
-[![Codacy Badge](https://img.shields.io/codacy/grade/4fd3728ced2b4d95b0eb549db7a0053b.svg?style=flat-square)](https://www.codacy.com/app/kristuff_/mishell?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kristuff/mishell&amp;utm_campaign=Badge_Grade)
-[![Code Climate](https://img.shields.io/codeclimate/github/kristuff/mishell.svg?style=flat-square)](https://codeclimate.com/github/kristuff/mishell)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/kristuff/mishell/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/kristuff/mishell/?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4fd3728ced2b4d95b0eb549db7a0053b)](https://www.codacy.com/manual/kristuff_/mishell?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kristuff/mishell&amp;utm_campaign=Badge_Grade)
+[![Maintainability](https://api.codeclimate.com/v1/badges/df91e6e4dda87ee128f1/maintainability)](https://codeclimate.com/github/kristuff/mishell/maintainability)[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/kristuff/mishell/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/kristuff/mishell/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/kristuff/mishell/badges/build.png?b=master)](https://scrutinizer-ci.com/g/kristuff/mishell/build-status/master)
 [![Latest Stable Version](https://poser.pugx.org/kristuff/mishell/v/stable)](https://packagist.org/packages/kristuff/mishell)
 [![License](https://poser.pugx.org/kristuff/mishell/license)](https://packagist.org/packages/kristuff/mishell)
