@@ -3,17 +3,17 @@ require_once __DIR__ .'/../vendor/autoload.php';
 use Kristuff\Mishell\Console;
 
 Console::clear();
-writeLoader();
+printLoader();
 goIndex();
 
 function goIndex()
 {
-    writeHeader();
-    writeIndex();
+    printHeader();
+    printIndex();
     askIndex();
 }
 
-function writeLoader()
+function printLoader()
 {
 
     Console::log();
@@ -78,7 +78,7 @@ function getIndex()
     return $index;
 }
 
-function writeHeader()
+function printHeader()
 {
     Console::clear();
     Console::log();
@@ -89,7 +89,7 @@ function writeHeader()
     Console::log();
 }
 
-function writeSampleHeader($index, $title)
+function printSampleHeader($index, $title)
 {
     Console::log('      ' . Console::text(Console::pad('',      20, ' ', STR_PAD_BOTH), 'white', 'bold', 'underline'));
     Console::log('      ' . Console::text(Console::pad('',      20, ' ', STR_PAD_BOTH), 'white', 'yellow', 'bold'));
@@ -98,7 +98,7 @@ function writeSampleHeader($index, $title)
     Console::log();
 }
 
-function writeIndex()
+function printIndex()
 {
     Console::log(' '. Console::text('Index:', 'underline', 'bold'));
     $rowHeaders = ['Index' => 10, 'Item'  => 25, 'Description' => 70];
@@ -109,7 +109,7 @@ function writeIndex()
     Console::$verticalInnerSeparator = '';
     Console::$horizontalSeparator = ' ';
 
-    //Console::log(' '.Console::tableRowSeparator($rowHeaders, 'gray'));
+    //Console::log(' '.Console::tableRowSeparator($rowHeaders, 'grey'));
 
     Console::$horizontalSeparator = '_';
     Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'bold'));
@@ -122,7 +122,7 @@ function writeIndex()
     Console::log(' '.Console::tableRow($rowHeaders, 'white', 'blue', 'bold'));
     Console::$horizontalSeparator = '_';
     Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'blue', 'bold'));
-    Console::log(' '.Console::tableRowEmpty($rowHeaders, 'white', 'cyan'));
+    Console::log(' '.Console::tableRowEmpty($rowHeaders, 'white', 'black'));
 
     $i = 0;
     foreach (getIndex() as $key => $value){
@@ -134,16 +134,18 @@ function writeIndex()
                     $value[0]   => 25, 
                     $value[1]   => 70
                 ], 
-                    ($i % 2 == 1) ? 'white' :  'white',  
-                    ($i % 2 == 1) ? 'cyan' :   'cyan',
-                    ($i % 2 == 1) ? ''      :  'bold'
+                'white', 'black'
+
+                 //   ($i % 2 == 1) ? 'white' :  'white',  
+                 //   ($i % 2 == 1) ? 'cyan' :   'lightgrey',
+                 //   ($i % 2 == 1) ? ''      :  'bold'
                 )
             );
             $i++;
         }
         
     }
-    Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'cyan', 'bold'));
+    Console::log(' '.Console::tableRowSeparator($rowHeaders, 'white', 'black', 'bold'));
 
     // reset table sseparators to defaults
     Console::resetDefaults();
@@ -159,7 +161,7 @@ function writeIndex()
 function askIndex()
 {
     $base = Console::text('~miShell^^' , 'yellow');
-    $base .= Console::text(' $ ' , 'gray');
+    $base .= Console::text(' $ ' , 'grey');
     $selectedIndex = Console::askInt($base . Console::text('Enter desired index then press [Enter] to run sample > ', 'white'));
     $index = getIndex();
 
@@ -177,8 +179,8 @@ function askIndex()
                 $filePath   = __DIR__ . '/'. $fileName;
                 
                 Console::clear();
-                writeHeader();
-                writeSampleHeader($selectedIndex, $title);
+                printHeader();
+                printSampleHeader($selectedIndex, $title);
 
                 Console::log($base . Console::text('Start running [', 'white') . 
                                      Console::text( $title, 'lightcyan') . 

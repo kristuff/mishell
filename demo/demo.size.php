@@ -12,7 +12,7 @@ Console::log('');
 
 // get columns and lines 
 $lines = Console::getLines();
-$cols = Console::getColumns();
+$cols  = Console::getColumns();
 
 // print value
 Console::log('The number of lines is currently: ' .Console::text($lines, 'green'));

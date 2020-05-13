@@ -13,13 +13,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @version    1.0.0 
+ * @version    1.1.0 
  * @copyright  2017-2020 Kristuff
  */
 
 namespace Kristuff\Mishell;
 
-abstract class ShellColoredWriter extends \Kristuff\Mishell\ShellWriter 
+abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter 
 {
     /**
      * Foreground colors constants
@@ -31,8 +31,8 @@ abstract class ShellColoredWriter extends \Kristuff\Mishell\ShellWriter
     protected static $foregroundColors = array(
         'normal'       => '39',   // your default color
         'black'        => '30', 
-        'gray'         => '1;30',
-        'lightgray'    => '37', 
+        'grey'         => '1;30',
+        'lightgrey'    => '37', 
         'white'        => '1;37',
         'blue'         => '34', 
         'lightblue'    => '1;34',
@@ -127,36 +127,36 @@ abstract class ShellColoredWriter extends \Kristuff\Mishell\ShellWriter
                 return self::getCliString($str, $args);             // get formated text
             
             // ****************************************
-            // Write methods (echo and return null)
+            // Print methods (echo and return null)
             // ****************************************
             
-            case'write':
-                echo (self::getCliString($str, $args));               // write text
+            case'print':
+                echo (self::getCliString($str, $args));               // print text
                 break;
             case'log':
-                echo (self::getCliString($str, $args) . self::$EOF );   // write text + newline
+                echo (self::getCliString($str, $args) . self::$EOF );   // print text + newline
                 break;
             case'relog':
                 echo (self::getCliString($str ."\r", $args));         // overwrite current line 
                 break;
 
-            // ****************************************
-            // Write+Question methods (return someting)
-            // ****************************************
+            // *****************************************
+            // Print+Question methods (return something)
+            // *****************************************
 
             case'ask':
-                echo (self::getCliString($str, $args));     // write question
+                echo (self::getCliString($str, $args));     // print question
                 return trim(fgets(STDIN));                  // reads and return one line from STDIN 
            
             case'askPassword':
                 self::hideInput();                          // hide 
-                echo (self::getCliString($str, $args));     // write question
+                echo (self::getCliString($str, $args));     // print question
                 $line= trim(fgets(STDIN));                  // reads one line from STDIN 
                 self::restoreInput();                       // restore 
                 return $line;                               // return line
                 
             case 'askInt':
-                echo (self::getCliString($str, $args));     // write question
+                echo (self::getCliString($str, $args));     // print question
                 fscanf(STDIN, "%d\n", $number);             // reads number from STDIN
                 return (is_int($number) ? $number : false); // return int value or false
         }
@@ -216,7 +216,7 @@ abstract class ShellColoredWriter extends \Kristuff\Mishell\ShellWriter
      *
      * @access public
      * @static method
-     * @param  string   [$str]                  The string to write
+     * @param  string   [$str]                  The string to output
      * @param  string   [$color]                The text color for the wall line
      * @param  string   [$bgcolor]              The back color for the wall line
      * @param  string   [$option]+...           The text styles for the wall line
@@ -229,28 +229,28 @@ abstract class ShellColoredWriter extends \Kristuff\Mishell\ShellWriter
     }
 
     /**
-     * Write a formated string in console.
+     * Print a formated string in console.
      *
      * @access public
      * @static method
-     * @param  string   [$str]                  The string to write
+     * @param  string   [$str]                  The string to print
      * @param  string   [$color]                The text color for the wall line
      * @param  string   [$bgcolor]              The back color for the wall line
      * @param  string   [$option]+...           The text styles for the wall line
      *
      * @return void
      */
-    public static function write()
+    public static function print()
     {
         return self::cmd('write', func_get_args());
     }
 
     /**
-     * Writes a formatted string in the console then waits for a user input.
+     * Prints a formatted string in the console then waits for a user input.
      *
      * @access public
      * @static method
-     * @param  string   [$str]                  The string to write
+     * @param  string   [$str]                  The string to print
      * @param  string   [$color]                The text color for the wall line
      * @param  string   [$bgcolor]              The back color for the wall line
      * @param  string   [$option]+...           The text styles for the wall line
@@ -263,11 +263,11 @@ abstract class ShellColoredWriter extends \Kristuff\Mishell\ShellWriter
     }
 
     /**
-     * Write a formated string in the console and wait for an integer input.
+     * Print a formated string in the console and wait for an integer input.
      *
      * @access public
      * @static method
-     * @param  string   [$str]                  The string to write
+     * @param  string   [$str]                  The string to print
      * @param  string   [$color]                The text color for the wall line
      * @param  string   [$bgcolor]              The back color for the wall line
      * @param  string   [$option]+...           The text styles for the wall line
@@ -280,9 +280,9 @@ abstract class ShellColoredWriter extends \Kristuff\Mishell\ShellWriter
     }
 
     /**
-     * Writes a formatted string in the console then waits for a user input (returns but does not displays that user's input).
+     * Prints a formatted string in the console then waits for a user input (returns but does not displays that user's input).
      *
-     * @param  string   [$str]                  The string to write
+     * @param  string   [$str]                  The string to print
      * @param  string   [$color]                The text color for the wall line
      * @param  string   [$bgcolor]              The back color for the wall line
      * @param  string   [$option]+...           The text styles for the wall line
@@ -295,11 +295,11 @@ abstract class ShellColoredWriter extends \Kristuff\Mishell\ShellWriter
     }
 
     /**
-     * Write a string to console and go to new line
+     * Print a string to console and go to new line
      *
      * @access public
      * @static method
-     * @param  string   [$str]                  The string to write
+     * @param  string   [$str]                  The string to print
      * @param  string   [$color]                The text color for the wall line
      * @param  string   [$bgcolor]              The back color for the wall line
      * @param  string   [$option]+...           The text styles for the wall line
@@ -316,7 +316,7 @@ abstract class ShellColoredWriter extends \Kristuff\Mishell\ShellWriter
      *
      * @access public
      * @static method
-     * @param  string   [$str]                  The string to write
+     * @param  string   [$str]                  The string to print
      * @param  string   [$color]                The text color for the wall line
      * @param  string   [$bgcolor]              The back color for the wall line
      * @param  string   [$option]+...           The text styles for the wall line
