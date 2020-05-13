@@ -10,7 +10,7 @@
 [![Latest Stable Version](https://poser.pugx.org/kristuff/mishell/v/stable)](https://packagist.org/packages/kristuff/mishell)
 [![License](https://poser.pugx.org/kristuff/mishell/license)](https://packagist.org/packages/kristuff/mishell)
 
-![sample](doc/screenshots/mishell-demo.png)
+![sample](doc/screenshots/sample-colors.png)
 
 - [Features](#features) 
 - [Requirements](#requirements) 
@@ -43,14 +43,14 @@ Deploy with your project (in `composer.json`):
 {
     ...
     "require": {
-        "kristuff/mishell": ">=1.0-stable"
+        "kristuff/mishell": ">=1.1-stable"
     }
 }
 ```
 
 Run the sample
 --------
-![logo](doc/screenshots/index.png)
+![demo](doc/screenshots/index.png)
 
 - clone this repo on github (*demo* and *doc* folders are excluded from dist)
     ```bash
@@ -89,9 +89,9 @@ Documentation
 
 The lib consists of one class `\Kristuff\Mishell\Console` that contains mainly 3 types of methods:
 
-- writing methods (normal or stylized/colorized text) : writes something
-- stylized/colorized CLI text builder methods : returns a formated string      
-- layout string builder methods (tables, padding) : returns a formated string
+- Printing methods (normal or stylized/colorized text) : print something
+- Stylized/colorized CLI text builder methods : returns a formatted string      
+- Layout string builder methods (tables, padding) : returns a formatted string
 
 Basic Example:
 ```php
@@ -116,24 +116,24 @@ Examples:
 ```php
 Use Kristuff\Mishell\Console;
 
-Console::write('some text', 'blue');                                // writes a blue text 
-Console::write('some text', 'bold');                                // writes a text style bold
-Console::write('some text', 'blue', 'underline');                   // writes a blue underlined text  
-Console::write('some text', 'blue', 'white');                       // writes a blue text on white
-Console::write('some text', 'blue', 'white', 'underline');          // writes a blue text on white and style underline
-Console::write('some text', 'blue', 'white', 'underline', 'bold');  // writes a blue text on white and styles underline+bold
+Console::print('some text', 'blue');                                // prints a blue text 
+Console::print('some text', 'bold');                                // prints a text style bold
+Console::print('some text', 'blue', 'underline');                   // prints a blue underlined text  
+Console::print('some text', 'blue', 'white');                       // prints a blue text on white
+Console::print('some text', 'blue', 'white', 'underline');          // prints a blue text on white and style underline
+Console::print('some text', 'blue', 'white', 'underline', 'bold');  // prints a blue text on white and styles underline+bold
 
-// writes a blue text on white and style reverse (so => white on blue...)
-Console::write('some text', 'blue', 'white', 'reverse');            
+// prints a blue text on white and style reverse (so => white on blue...)
+Console::print('some text', 'blue', 'white', 'reverse');            
 
-// writes a blue text on white and style underline 
+// prints a blue text on white and style underline 
 // (except background after foreground, args order does not matter)
-Console::write('some text', 'blue', 'white', 'underline');            
-Console::write('some text', 'underline', 'blue', 'white');            
-Console::write('some text', 'blue', 'underline', 'white');            
+Console::print('some text', 'blue', 'white', 'underline');            
+Console::print('some text', 'underline', 'blue', 'white');            
+Console::print('some text', 'blue', 'underline', 'white');            
 
-// Writes a text with no style at all (note the 'none' argument at the end...)
-Console::write('some text', 'blue', 'underline', 'none');            
+// Prints a text with no style at all (note the 'none' argument at the end...)
+Console::print('some text', 'blue', 'underline', 'none');            
 [...]
 //Got it?
 ```
@@ -144,8 +144,8 @@ Name            |  ANSI Code
 --------------- | --------  
 normal          | \033[39m       
 black           | \033[30m  
-gray            | \033[1;30m 
-lightgray       | \033[37m  
+grey            | \033[1;30m 
+lightgrey       | \033[37m  
 white           | \033[1;37m  
 blue            | \033[34m    
 lightblue       | \033[1;34m  
@@ -188,12 +188,12 @@ reverse         | \033[7m
 
 Method | Description | Return| Note
 --- | --- | --- | ---
-`Console::write($str, [styles])`        | Writes a [formatted] string in the console. | `void` |
-`Console::log($str, [styles])`          | Writes a [formatted] string in the console with new line. | `void` |
-`Console::reLog($str, [styles])`        | Writes or overwites the current line with a [formatted] string. | `void` |
-`Console::ask($str, [styles])`          | Writes a [formatted] string in the console and waits for an input. Returns that input. |`string` |
-`Console::askInt($str, [styles])`       | Writes a [formatted] string in the console and waits for an int input. | `int`&#124;`bool` |    
-`Console::askPassword($str, [styles])`  | Writes a [formatted] string in the console and waits for an input. Returns but does not print user input. | `string` | **Not supported** on windows platform
+`Console::print($str, [styles])`        | Prints a [formatted] string in the console. | `void` |
+`Console::log($str, [styles])`          | Prints a [formatted] string in the console with new line. | `void` |
+`Console::reLog($str, [styles])`        | Prints or overwites the current line with a [formatted] string. | `void` |
+`Console::ask($str, [styles])`          | Prints a [formatted] string in the console and waits for an input. Returns that input. |`string` |
+`Console::askInt($str, [styles])`       | Prints a [formatted] string in the console and waits for an int input. | `int`&#124;`bool` |    
+`Console::askPassword($str, [styles])`  | Prints a [formatted] string in the console and waits for an input. Returns but does not print user input. | `string` | **Not supported** on windows platform
 
 ### 2.2 Text/layout builder methods
 
@@ -225,6 +225,14 @@ Method | Description | Return | Note
 + tables methods
 + enum styles
  ...
+
+
+
+Bonus
+-----
+You can also do unuseful things like the blue screen of the death^^ Check the demo
+![blue-screen](doc/screenshots/blue-screen.png)
+
 
 License
 -------

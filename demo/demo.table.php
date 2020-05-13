@@ -48,7 +48,7 @@ $rows = [
     ],
     [
         Console::text('bar (on right)',   'white'),     
-        Console::text( 'some centered text gray for bar', 'gray')
+        Console::text( 'some centered text grey for bar', 'grey')
     ],
     [
         Console::text('foobar (on right)', 'white'),    
