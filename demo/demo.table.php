@@ -1,14 +1,15 @@
 <?php
-
 require_once __DIR__ .'/../vendor/autoload.php';
 use Kristuff\Mishell\Console;
 
-Console::log('Basic sample', 'white', 'magenta');
+console::resetDefaults();
+
+Console::log(' ' . Console::text('Basic sample', 'white', 'underlined'));
 Console::log();
 
 $rowHeaders = ['Index' => 10, 'Item'  => 25, 'Description' => 50];
 $rows = [
-    ['foo',        'some text for foo'],
+    ['foo',       'some text for foo'],
     ['bar',       'some text for bar'],
     ['foobar',    'some text for foobar']
 ];
@@ -33,12 +34,12 @@ Console::log();
 // -------------------------------
 // ------ ADVANCED SAMPLE --------
 // -------------------------------
-Console::log('Advanced sample', 'white', 'magenta');
+Console::log(' ' . Console::text('Advanced sample', 'white', 'underlined'));
 Console::log();
 
 $rowHeaders = [
     Console::text('Index', 'blue')                  => 10, 
-    Console::text('Item', 'white', 'underline')     => 25, 
+    Console::text('Item', 'white', 'underlined')    => 25, 
     Console::text('Description', 'white')           => 50
 ];
 $rows = [
@@ -48,7 +49,7 @@ $rows = [
     ],
     [
         Console::text('bar (on right)',   'white'),     
-        Console::text( 'some centered text grey for bar', 'grey')
+        Console::text( 'some centered text green for bar', 'green')
     ],
     [
         Console::text('foobar (on right)', 'white'),    
@@ -84,4 +85,6 @@ foreach ($rows as $key => $value){
 // table end
 Console::log(Console::tableRowEmpty($rowHeaders));     // empty row            |         |         |     ...
 Console::log(Console::tableSeparator($rowHeaders)); // saparator               |-----------------------  ...
+console::resetDefaults();
 
+?>

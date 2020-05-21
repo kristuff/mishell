@@ -1,19 +1,22 @@
 <?php
-
 require_once __DIR__ .'/../vendor/autoload.php';
 use Kristuff\Mishell\Console;
 
-Console::log('Overview:', 'underline', 'bold');
-Console::log("  - Use Console::bell() to play a bell sound in console (if available).", 'white');
-Console::log('');
+Console::log(' '. Console::text('Overview:', 'underlined', 'bold'));
+Console::log('  - Use ' . Console::text("Console::bell()", 'lightblue', 'underlined') . ' to play a bell sound in console (if available).', 'white');
+Console::log();   
+Console::log(' '. Console::text('Usage:', 'underlined', 'bold'));
+Console::log();   
+Console::log('   ' .Console::text('// Play the bell', 'green'));
+Console::log('   ' .Console::text('Console::bell();', 'lightmagenta'));
+Console::log();   
+Console::log(' '. Console::text('Sample:', 'underlined', 'bold'));
 
-Console::log('Usage:', 'underline', 'bold');
-Console::log('');
-Console::log('   ' .Console::text(str_pad('// Play the bell', 60), 'red',   'white'));
-Console::log('   ' .Console::text(str_pad('Console::bell();', 60), 'black', 'white'));
-Console::log('');
-
-Console::log('Sample:', 'underline', 'bold');
+// -----------------
+// sample start here
+// -----------------
 Console::bell();
-Console::log('Hey! we just play the bell, did you hear??', 'white', 'cyan');
-Console::log('');
+Console::log(' Hey! we just play the bell, did you hear??', 'lightgray');
+Console::log();   
+
+?>

@@ -14,7 +14,7 @@ for ($i= 0; $i <= $lines ; $i++){
 
     switch($i){
         case $middle -1:
-            Console::log(Console::pad(":( Houston, we've had a problem...", $cols, ' ', STR_PAD_BOTH), 'white', 'blue');
+            Console::log(Console::pad(":(   Houston, we've had a problem...", $cols, ' ', STR_PAD_BOTH), 'white', 'blue');
             break;
         case $middle :
             Console::log(Console::pad('an error occurred in my head,', $cols, ' ', STR_PAD_BOTH), 'white', 'blue');
@@ -26,8 +26,10 @@ for ($i= 0; $i <= $lines ; $i++){
             Console::log(Console::pad(' ', $cols), 'white', 'blue');
     }
 }
-Console::askInt(Console::pad('Press enter to stop damage your eyes >   ', $cols, ' ', STR_PAD_LEFT), 'white', 'blue');
+Console::askInt(Console::pad('Press something to stop damage your eyes >   ', $cols, ' ', STR_PAD_LEFT), 'white', 'blue');
 
 // restore window
 Console::restoreWindow();
 Console::log('Any resemblance to a lived situation is a pure coincidence.');
+
+?>

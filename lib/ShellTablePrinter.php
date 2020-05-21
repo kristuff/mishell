@@ -24,21 +24,21 @@ abstract class ShellTablePrinter extends \Kristuff\Mishell\ShellColoredPrinter
     /**
      * Align left constant
      *
-     * @const    int
+     * @const int
      */
     const ALIGN_LEFT = STR_PAD_RIGHT;
 
     /**
      * Align right constant
      *
-     * @const    int
+     * @const int
      */
     const ALIGN_RIGHT = STR_PAD_LEFT;
 
     /**
      * Align center constant
      *
-     * @const    int
+     * @const int
      */
     const ALIGN_CENTER = STR_PAD_BOTH;
 
@@ -120,6 +120,7 @@ abstract class ShellTablePrinter extends \Kristuff\Mishell\ShellColoredPrinter
         self::$horizontalSeparator      = self::$defaultHorizontalSign;
         self::$tableCellPadding         = self::$defaultCellPadding;
         self::$verticalInnerSeparator   = self::$defaultVerticalInnerSign;
+        self::$tableCellPadding         = self::$defaultCellPadding;
     }
 
     /**
