@@ -10,7 +10,7 @@
 [![Latest Stable Version](https://poser.pugx.org/kristuff/mishell/v/stable)](https://packagist.org/packages/kristuff/mishell)
 [![License](https://poser.pugx.org/kristuff/mishell/license)](https://packagist.org/packages/kristuff/mishell)
 
-![sample](doc/screenshots/sample-colors.png)
+![sample](doc/screenshots/loading.png)
 
 - [Features](#features) 
 - [Requirements](#requirements) 
@@ -43,14 +43,14 @@ Deploy with your project (in `composer.json`):
 {
     ...
     "require": {
-        "kristuff/mishell": ">=1.1-stable"
+        "kristuff/mishell": ">=1.2-stable"
     }
 }
 ```
 
 Run the sample
 --------
-![demo](doc/screenshots/index.png)
+![demo](doc/screenshots/demo.gif)
 
 - clone this repo on github (*demo* and *doc* folders are excluded from dist)
     ```bash
@@ -72,13 +72,13 @@ Run the sample
 Documentation
 --------
     
-*in progress...*
+*still in progress...*
 
 1. [Overview](#1-overview)  
   1.1 [Working with styles](#11-working-with-styles)    
   1.2 [Known foreground colors](#12-known-foreground-colors)   
   1.3 [Known background colors](#13-known-background-colors)   
-  1.4 [Known options](#14-known-options) 
+  1.4 [Known formats](#14-known-formats) 
 2. [Api methods](#2-api-methods)     
     2.1 [Writing methods](#21-writing-methods)   
     2.2 [Text/layout builder methods](#22-text-layout-builder-methods)   
@@ -96,7 +96,11 @@ The lib consists of one class `\Kristuff\Mishell\Console` that contains mainly 3
 Basic Example:
 ```php
 Use Kristuff\Mishell\Console;
+
+Console::log(' I will ask you something', 'red');
+
 $value = Console::askInt('Please enter a number > ');
+
 if ($value !== false){
     Console::log('=> The value you entered is [' . Console::text($value, 'yellow') . ']');
 }
@@ -108,78 +112,88 @@ The arguments are analyzed as follows:
 
 - First argument that matchs to a known foreground color is taken as foreground color.
 - First argument that matchs to a known background color (when a foreground color is already defined) is taken as background color (you cannot use a background color without set explicitly foreground color before).   
-- Other arguments that match to a known option are taken as options.
+- Other arguments that match to a known format are taken as formats.
 
 So except for background that should be after foreground, style arguments order does not matter. Just note that the `'none'` argument will reset any previous style arguments.
 
 Examples:
 ```php
+<?php
 Use Kristuff\Mishell\Console;
 
-Console::print('some text', 'blue');                                // prints a blue text 
-Console::print('some text', 'bold');                                // prints a text style bold
-Console::print('some text', 'blue', 'underline');                   // prints a blue underlined text  
-Console::print('some text', 'blue', 'white');                       // prints a blue text on white
-Console::print('some text', 'blue', 'white', 'underline');          // prints a blue text on white and style underline
-Console::print('some text', 'blue', 'white', 'underline', 'bold');  // prints a blue text on white and styles underline+bold
+Console::log('some text', 'blue');                                // prints a blue text 
+Console::log('some text', 'bold');                                // prints a text style bold
+Console::log('some text', 'lightblue', 'underlined');             // prints a blue underlined text  
+Console::log('some text', 'blue', 'white');                       // prints a blue text on white
+Console::log('some text', 'blue', 'white', 'underlined');         // prints a blue text on white and style underline
+Console::log('some text', 'blue', 'white', 'underlined', 'bold'); // prints a blue text on white and styles underline+bold
 
 // prints a blue text on white and style reverse (so => white on blue...)
-Console::print('some text', 'blue', 'white', 'reverse');            
+Console::log('some text', 'blue', 'white', 'reverse');            
 
 // prints a blue text on white and style underline 
 // (except background after foreground, args order does not matter)
-Console::print('some text', 'blue', 'white', 'underline');            
-Console::print('some text', 'underline', 'blue', 'white');            
-Console::print('some text', 'blue', 'underline', 'white');            
+Console::log('some text', 'blue', 'white', 'underlined');            
+Console::log('some text', 'underlined', 'blue', 'white');            
+Console::log('some text', 'lightblue', 'underlined', 'white');            
 
 // Prints a text with no style at all (note the 'none' argument at the end...)
-Console::print('some text', 'blue', 'underline', 'none');            
+Console::log('some text', 'lightblue', 'underlined', 'none');            
 [...]
 //Got it?
 ```
 
 ### 1.2 Known foreground colors
 
-Name            |  ANSI Code 
---------------- | --------  
-normal          | \033[39m       
-black           | \033[30m  
-grey            | \033[1;30m 
-lightgrey       | \033[37m  
-white           | \033[1;37m  
-blue            | \033[34m    
-lightblue       | \033[1;34m  
-green           | \033[32m     
-lightgreen      | \033[1;32m   
-cyan            | \033[36m     
-lightcyan       | \033[1;36m    
-red             | \033[31m     
-lightred        | \033[1;31m     
-magenta         | \033[35m       
-lightmagenta    | \033[1;35m     
-brown           | \033[33m       
-yellow          | \033[1;33m     
+Name         |  ANSI Code 
+------------ | --------  
+black        | \033[30m
+red          | \033[31m 
+green        | \033[32m 
+yellow       | \033[33m
+blue         | \033[34m 
+magenta      | \033[35m 
+cyan         | \033[36m 
+lightgray    | \033[37m 
+default      | \033[39m  
+darkgray     | \033[90m
+lightred     | \033[91m
+lightgreen   | \033[92m
+lightyellow  | \033[93m
+lightblue    | \033[94m
+lightmagenta | \033[95m
+lightcyan    | \033[96m
+white        | \033[97m
 
 ### 1.3 Known background colors
 
-Name            |  ANSI Code 
---------------- | --------  
-black           | \033[40m 
-red             | \033[41m 
-green           | \033[42m 
-yellow          | \033[43m 
-blue            | \033[44m  
-magenta         | \033[45m   
-cyan            | \033[46m    
-white           | \033[47m    
+Name         |  ANSI Code 
+------------ | --------  
+black        | \033[40m   
+red          | \033[41m
+green        | \033[42m  
+yellow       | \033[43m
+blue         | \033[44m   
+magenta      | \033[45m
+cyan         | \033[46m   
+lightgray    | \033[47m
+default      | \033[49m
+darkgray     | \033[100m 
+lightred     | \033[101m 
+lightgreen   | \033[102m 
+lightyellow  | \033[103m
+lightblue    | \033[104m 
+lightmagenta | \033[105m 
+lightcyan    | \033[106m 
+white        | \033[107m
 
-### 1.4 Known options
+### 1.4 Known formats
 
 Name            |  ANSI Code 
 --------------- | --------  
 none            | \033[0m       
 bold            | \033[1m 
-underline       | \033[4m 
+underlined      | \033[4m 
 blink           | \033[5m 
 reverse         | \033[7m 
 

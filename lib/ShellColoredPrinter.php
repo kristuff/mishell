@@ -13,7 +13,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @version    1.1.0 
+ * @version    1.2.0 
  * @copyright  2017-2020 Kristuff
  */
 
@@ -24,34 +24,34 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
     /**
      * Foreground colors constants
      *
-     * @access public
+     * @access protected
      * @static var
      * @var    array
      */
     protected static $foregroundColors = array(
-        'normal'       => '39',   // your default color
         'black'        => '30', 
-        'grey'         => '1;30',
-        'lightgrey'    => '37', 
-        'white'        => '1;37',
-        'blue'         => '34', 
-        'lightblue'    => '1;34',
-        'green'        => '32', 
-        'lightgreen'   => '1;32',
-        'cyan'         => '36', 
-        'lightcyan'    => '1;36',
         'red'          => '31', 
-        'lightred'     => '1;31',
+        'green'        => '32', 
+        'yellow'       => '33',
+        'blue'         => '34', 
         'magenta'      => '35', 
-        'lightmagenta' => '1;35',
-        'brown'        => '33', 
-        'yellow'       => '1;33',
+        'cyan'         => '36', 
+        'lightgray'    => '37', 
+        'default'      => '39',   // your default color
+        'darkgray'     => '90',
+        'lightred'     => '91',
+        'lightgreen'   => '92',
+        'lightyellow'  => '93',
+        'lightblue'    => '94',
+        'lightmagenta' => '95',
+        'lightcyan'    => '96',
+        'white'        => '97',
     );
     
     /**
      * Background colors constants
      *
-     * @access public
+     * @access protected
      * @static var
      * @var    array
      */
@@ -63,7 +63,16 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
         'blue'         => '44',   
         'magenta'      => '45',
         'cyan'         => '46',   
-        'white'        => '47',
+        'lightgray'    => '47',
+        'default'      => '49',
+        'darkgray'     => '100', 
+        'lightred'     => '101', 
+        'lightgreen'   => '102', 
+        'lightyellow'  => '103',
+        'lightblue'    => '104', 
+        'lightmagenta' => '105', 
+        'lightcyan'    => '106', 
+        'white'        => '107',
     );
  
     /**
@@ -76,9 +85,13 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
     protected static $options = array(
         'none'         => '0',    // reset all styles
         'bold'         => '1',    // 
-        'underline'    => '4',    
+        'dim'          => '2',
+        'underlined'   => '4',    
         'blink'        => '5', 
         'reverse'      => '7',    // reverse foreground/background color
+
+        //formats=(["bold"]=1 ["bright"]=1 ["dim"]=2 ["underlined"]=4 ["blink"]=5 ["reverse"]=7 ["hidden"]=8)
+        //resets=(["all"]=0 ["bold"]=21 ["bright"]=21 ["dim"]=22 ["underlined"]=24 ["blink"]=25 ["reverse"]=27 ["hidden"]=28)
     );
     
     /**
@@ -175,7 +188,7 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
      *
      * @return mixed|void
      */
-    protected static function getCliString($str, array $arguments = [])
+    protected static function getCliString(string $str, array $arguments = [])
     {
         if (empty($arguments)){
             return $str;
@@ -206,6 +219,7 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
         }
 
         // Add string and end coloring
+        // todo \e[0m 
         $coloredString .= "\033[" . implode(';',$cliArgs) .'m';
         $coloredString .=  $str . "\033[0m";
         return $coloredString;

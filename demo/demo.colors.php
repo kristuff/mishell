@@ -2,16 +2,14 @@
 require_once __DIR__ .'/../vendor/autoload.php';
 use Kristuff\Mishell\Console;
 
-
+// headers
 $rowHeaders = ['#Num' => 7, 'Color name' => 15, ' ANSI Code'  => 15, ' Sample ouput' => 50];
-
 Console::log('  '.Console::tableRowSeparator($rowHeaders));
 Console::log('  '.Console::tableRow($rowHeaders));
 Console::log('  '.Console::tableRowSeparator($rowHeaders));
-Console::log('  '.Console::tableRowEmpty($rowHeaders));
 
+// loop into foregrounds
 $i = 1;
-
 foreach (Console::getStyles()['foregrounds'] as $color => $colorValue ){
     Console::log('  '.Console::tableRow([
        ' ' . $i     => 7,
@@ -21,6 +19,7 @@ foreach (Console::getStyles()['foregrounds'] as $color => $colorValue ){
     ]));
     $i++;
 }
-Console::log('  '.Console::tableRowEmpty($rowHeaders));
+// close table
 Console::log('  '.Console::tableRowSeparator($rowHeaders));
 
+?>
