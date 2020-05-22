@@ -98,6 +98,14 @@ abstract class ShellTablePrinter extends \Kristuff\Mishell\ShellColoredPrinter
      */
     public static $verticalSeparator   = '|';
 
+    /**
+     * The vertical header separator sign. 
+     *
+     * @access public
+     * @var    string
+     */
+    public static $verticalHeaderSeparator   = '+';
+
    /**
      * The vertical separator sign. 
      *
@@ -141,12 +149,12 @@ abstract class ShellTablePrinter extends \Kristuff\Mishell\ShellColoredPrinter
         array_shift($args);
 
         $str = self::$verticalSeparator ;
-        $cellPaddingLenght = strlen(self::$tableCellPadding) *2;
+        $cellPaddingLenght = mb_strlen(self::$tableCellPadding) *2;
         foreach ($columnsPads as $key => $pad){
-            $str .= str_repeat(self::$horizontalSeparator , $pad + $cellPaddingLenght) .self::$verticalInnerSeparator ;
+            $str .= str_repeat(self::$horizontalSeparator , $pad + $cellPaddingLenght) .self::$verticalInnerSeparator;
         }
 
-        return self::getCliString(self::$verticalInnerSeparator === '' ? $str : substr($str, 0, strlen($str) -1). self::$verticalSeparator, $args);
+        return self::getCliString(self::$verticalInnerSeparator === '' ? $str : substr($str, 0, mb_strlen($str) -1). self::$verticalSeparator, $args);
     }
 
      /**
@@ -166,12 +174,13 @@ abstract class ShellTablePrinter extends \Kristuff\Mishell\ShellColoredPrinter
         $columnsPads = !empty($args) ? $args[0] : [];
         array_shift($args);
 
-        $str = self::$verticalSeparator ;
-        $cellPaddingLenght = strlen(self::$tableCellPadding) *2;
+        $str = self::$verticalHeaderSeparator ;
+        $cellPaddingLenght = mb_strlen(self::$tableCellPadding) *2;
         foreach ($columnsPads as $key => $pad){
-            $str .= str_repeat(self::$horizontalSeparator , $pad + $cellPaddingLenght) .self::$horizontalSeparator;
+            $str .= str_repeat(self::$horizontalSeparator , $pad + $cellPaddingLenght) .self::$verticalInnerSeparator ;
         }
-        return self::getCliString(substr($str, 0, strlen($str) -1). self::$verticalSeparator, $args);
+        return self::getCliString(self::$verticalInnerSeparator === '' ? $str : substr($str, 0, mb_strlen($str) -1). self::$verticalHeaderSeparator, $args);
+
     }
 
     /**

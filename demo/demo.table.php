@@ -44,16 +44,16 @@ $rowHeaders = [
 ];
 $rows = [
     [
-        Console::text('foo (on right)',   'white'),     
+        Console::text('foo',   'white'),     
         Console::text('some centered text red for foo', 'red')
     ],
     [
-        Console::text('bar (on right)',   'white'),     
+        Console::text('bar',   'white'),     
         Console::text( 'some centered text green for bar', 'green')
     ],
     [
-        Console::text('foobar (on right)', 'white'),    
-        'some centered text ' .Console::text('on BLUE here', 'white', 'blue'). ' for foobar' 
+        Console::text('foobar', 'white'),    
+        'some text with unicode ✓ ' .Console::text('on BLUE here', 'white', 'blue')  
     ]
 ];
 
@@ -86,5 +86,49 @@ foreach ($rows as $key => $value){
 Console::log(Console::tableRowEmpty($rowHeaders));     // empty row            |         |         |     ...
 Console::log(Console::tableSeparator($rowHeaders)); // saparator               |-----------------------  ...
 console::resetDefaults();
+
+// -------------------------------
+// ------ ANOTHER STYLE  ---------
+// -------------------------------
+Console::log();
+Console::log(' ' . Console::text('Another style sample', 'white', 'underlined'));
+Console::log();
+
+$rowHeaders = [
+    Console::text('Item',           'darkgray')    => 10, 
+    Console::text('Status',         'darkgray')    => 12,
+    Console::text('Description',    'darkgray')    => 25
+    //✓✗ 
+];
+$rows = [
+    [Console::text('foo',     'white'), Console::text(' ONLINE ',  'white', 'green') , Console::text('some text for foo',    'white')],
+    [Console::text('bar',     'white'), Console::text(' ONLINE ',  'white', 'green') , Console::text('some text for bar',    'white')],
+    [Console::text('foobar ', 'white'), Console::text(' OFFLINE ', 'white', 'red')   , Console::text('some text for foobar', 'white')]
+];
+
+Console::$horizontalSeparator = '-';            // change the horizontal separator
+Console::$tableCellPadding = '';                // no padding 
+Console::$verticalInnerSeparator = '   ';       // blank separator
+     Console::$verticalSeparator = '   ';       // no top left/right separator except a margin..
+// Console::$verticalHeaderSeparator = '';      // no top left/right separator (not needed)
+
+// table start
+Console::log(Console::tableRowSeparator($rowHeaders, 'drakgray')); // saparator            ---------   ---------   ---  
+Console::log(Console::tableRow($rowHeaders, 'drakgray'));          // columns headers      foo         bar         f... 
+Console::log(Console::tableRowSeparator($rowHeaders, 'drakgray')); // saparator            ---------   ---------   ---  
+
+// tables rows
+foreach ($rows as $row){
+    Console::log(
+        Console::TableRowStart().           // start row with separator. Then, each cell will end with a separator 
+        Console::TableRowCell($row[0] , 10).   // keep align right left
+        Console::TableRowCell($row[1] , 12, Console::ALIGN_CENTER).  // align center
+        Console::TableRowCell($row[2] , 25)  // keep align right left
+    );
+}
+// table end
+Console::log(Console::tableRowSeparator($rowHeaders, 'drakgray')); // saparator            ---------   ---------   ---  
+console::resetDefaults();
+
 
 ?>
