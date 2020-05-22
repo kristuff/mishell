@@ -13,7 +13,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @version    1.2.0 
+ * @version    1.3.0 
  * @copyright  2017-2020 Kristuff
  */
 
@@ -356,7 +356,7 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
      */    
     public function pad($input, $padLength, $padString = ' ', $padType = STR_PAD_RIGHT)
     {
-        $diff = $padLength - strlen(preg_replace('#\\033\[[[0-9;*]{1,}m#', '', $input));
+        $diff = $padLength - mb_strlen(preg_replace('#\\033\[[[0-9;*]{1,}m#', '', $input));
         
         if ($diff > 0){
             switch ($padType){
