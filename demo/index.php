@@ -24,7 +24,7 @@ function printLoader()
     Console::log('    '. Console::text("  | | | | | | | ___) | | | |  __/ | |   ", 'red'));
     Console::log('    '. Console::text("  |_| |_| |_|_||____/|_| |_|\___|_|_|   ", 'red'));
     Console::log('    '. Console::text("                                        ", 'red'));
-    Console::log('    '. Console::text("                 Version 1.2            ", 'red'));
+    Console::log('    '. Console::text("                 Version 1.3            ", 'red'));
     Console::log('    '. Console::text("                 © 2017-2020 Kristuff   ", 'red'));
     Console::log('    '. Console::text("                                        ", 'red'));
     Console::log();
