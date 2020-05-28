@@ -346,7 +346,7 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
      * A cli version of str_pad() that takes care of not printable ANSI chars
      *
      * @access protected
-     * @static method
+     * @static
      * @param  string   $input                  The input text
      * @param  int      $padLenght              The pad length. Default is 0 (no pad)
      * @param  string   $padString              The pad string. Default is blank char.
@@ -354,7 +354,7 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
      *
      * @return mixed|void
      */    
-    public function pad($input, $padLength, $padString = ' ', $padType = STR_PAD_RIGHT)
+    public static function pad($input, $padLength, $padString = ' ', $padType = STR_PAD_RIGHT)
     {
         $diff = $padLength - mb_strlen(preg_replace('#\\033\[[[0-9;*]{1,}m#', '', $input));
         
