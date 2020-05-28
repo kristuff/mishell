@@ -43,7 +43,7 @@ Deploy with your project (in `composer.json`):
 {
     ...
     "require": {
-        "kristuff/mishell": ">=1.3-stable"
+        "kristuff/mishell": ">=1.4-stable"
     }
 }
 ```

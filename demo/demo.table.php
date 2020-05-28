@@ -98,7 +98,6 @@ $rowHeaders = [
     Console::text('Item',           'darkgray')    => 10, 
     Console::text('Status',         'darkgray')    => 12,
     Console::text('Description',    'darkgray')    => 25
-    //✓✗ 
 ];
 $rows = [
     [Console::text('foo',     'white'), Console::text(' ONLINE ',  'white', 'green') , Console::text('some text for foo',    'white')],
@@ -129,6 +128,5 @@ foreach ($rows as $row){
 // table end
 Console::log(Console::tableRowSeparator($rowHeaders, 'drakgray')); // saparator            ---------   ---------   ---  
 console::resetDefaults();
-
 
 ?>
