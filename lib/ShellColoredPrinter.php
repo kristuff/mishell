@@ -13,8 +13,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @version    1.4.0 
- * @copyright  2017-2020 Kristuff
+ * @version    1.5.0
+ * @copyright  2017-2021 Kristuff
  */
 
 namespace Kristuff\Mishell;
@@ -25,7 +25,7 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
      * Foreground colors constants
      *
      * @access protected
-     * @static var
+     * @static
      * @var    array
      */
     protected static $foregroundColors = array(
@@ -52,7 +52,7 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
      * Background colors constants
      *
      * @access protected
-     * @static var
+     * @static
      * @var    array
      */
     protected static $backgroundColors = array(
@@ -79,7 +79,7 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
      * Text styles constants
      *
      * @access public
-     * @static var
+     * @static
      * @var    array
      */
     protected static $options = array(
@@ -98,7 +98,7 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
      * Get an array of all available styles
      *
      * @access public
-     * @static method
+     * @static
      *
      * @return array
      */
@@ -115,7 +115,7 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
      * Internal method dispatcher
      *
      * @access protected
-     * @static method
+     * @static
      * @param  string   $command                The command name string
      * @param  string   $args                   The command arguments
      *
@@ -137,7 +137,7 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
             // ****************************************
 
             case'text':
-                return self::getCliString($str, $args);             // get formated text
+                return self::getCliString($str, $args);             // get formatted text
             
             // ****************************************
             // Print methods (echo and return null)
@@ -179,10 +179,10 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
     }
       
     /**
-     * Get a formated cli string to output in the console
+     * Get a formatted cli string to output in the console
      *
      * @access protected
-     * @static method
+     * @static
      * @param  string   $str                    The text to output
      * @param  string   $arguments              The command arguments
      *
@@ -226,10 +226,10 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
     }
 
     /**
-     * Get a formated string to be returned in console.
+     * Get a formatted string to be returned in console.
      *
      * @access public
-     * @static method
+     * @static
      * @param  string   [$str]                  The string to output
      * @param  string   [$color]                The text color for the wall line
      * @param  string   [$bgcolor]              The back color for the wall line
@@ -243,10 +243,10 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
     }
 
     /**
-     * Print a formated string in console.
+     * Print a formatted string in console.
      *
      * @access public
-     * @static method
+     * @static
      * @param  string   [$str]                  The string to print
      * @param  string   [$color]                The text color for the wall line
      * @param  string   [$bgcolor]              The back color for the wall line
@@ -263,7 +263,7 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
      * Prints a formatted string in the console then waits for a user input.
      *
      * @access public
-     * @static method
+     * @static
      * @param  string   [$str]                  The string to print
      * @param  string   [$color]                The text color for the wall line
      * @param  string   [$bgcolor]              The back color for the wall line
@@ -277,10 +277,10 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
     }
 
     /**
-     * Print a formated string in the console and wait for an integer input.
+     * Print a formatted string in the console and wait for an integer input.
      *
      * @access public
-     * @static method
+     * @static
      * @param  string   [$str]                  The string to print
      * @param  string   [$color]                The text color for the wall line
      * @param  string   [$bgcolor]              The back color for the wall line
@@ -312,7 +312,7 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
      * Print a string to console and go to new line
      *
      * @access public
-     * @static method
+     * @static
      * @param  string   [$str]                  The string to print
      * @param  string   [$color]                The text color for the wall line
      * @param  string   [$bgcolor]              The back color for the wall line
@@ -329,7 +329,7 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
      * Overwrite the current line in console.
      *
      * @access public
-     * @static method
+     * @static
      * @param  string   [$str]                  The string to print
      * @param  string   [$color]                The text color for the wall line
      * @param  string   [$bgcolor]              The back color for the wall line

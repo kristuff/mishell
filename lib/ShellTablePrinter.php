@@ -13,8 +13,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @version    1.1.0
- * @copyright  2017-2020 Kristuff
+ * @version    1.5.0
+ * @copyright  2017-2021 Kristuff
  */
 
 namespace Kristuff\Mishell;
@@ -118,7 +118,7 @@ abstract class ShellTablePrinter extends \Kristuff\Mishell\ShellColoredPrinter
      * Resets the default options
      *
      * @access public
-     * @static method
+     * @static
      *
      * @return void         
      */
@@ -132,10 +132,10 @@ abstract class ShellTablePrinter extends \Kristuff\Mishell\ShellColoredPrinter
     }
 
     /**
-     * Gets a formated table row separator
+     * Gets a formatted table row separator
      *
      * @access public
-     * @static method
+     * @static
      * @param  string   [$color]        The text color for the wall row
      * @param  string   [$bgcolor]      The back color for the wall row
      * @param  string   [$option]+...   The text styles for the wall row
@@ -157,11 +157,11 @@ abstract class ShellTablePrinter extends \Kristuff\Mishell\ShellColoredPrinter
         return self::getCliString(self::$verticalInnerSeparator === '' ? $str : substr($str, 0, mb_strlen($str) -1). self::$verticalSeparator, $args);
     }
 
-     /**
-     * Gets a formated table row separator
+    /**
+     * Gets a formatted table row separator
      *
      * @access public
-     * @static method
+     * @static
      * @param  string   [$color]        The text color for the wall row
      * @param  string   [$bgcolor]      The back color for the wall row
      * @param  string   [$option]+...   The text styles for the wall row
@@ -184,10 +184,10 @@ abstract class ShellTablePrinter extends \Kristuff\Mishell\ShellColoredPrinter
     }
 
     /**
-     * Gets a formated table blank row 
+     * Gets a formatted table blank row 
      *
      * @access public
-     * @static method
+     * @static
      * @param  string   [$color]        The text color for the wall row
      * @param  string   [$bgcolor]      The back color for the wall row
      * @param  string   [$option]+...   The text styles for the wall row
@@ -217,9 +217,9 @@ abstract class ShellTablePrinter extends \Kristuff\Mishell\ShellColoredPrinter
      * Return a table row start.  
      *
      * @access public
-     * @static method
+     * @static
      *
-     * @return void         
+     * @return string
      */
     public static function tableRowStart()
     {
@@ -230,7 +230,7 @@ abstract class ShellTablePrinter extends \Kristuff\Mishell\ShellColoredPrinter
      * Return a table cell string.
      *
      * @access public
-     * @static method
+     * @static
      * @param  string   $column         The column text. 
      * @param  int      $lenght         The column length. Default is 0 (no pad)
      * @param  int      $align          The column alignement (Console::ALIGN_LEFT, Console::ALIGN_RIGHT or Console::ALIGN_CENTER). Default is Console::ALIGN_LEFT.
@@ -249,7 +249,7 @@ abstract class ShellTablePrinter extends \Kristuff\Mishell\ShellColoredPrinter
      * Return a table row string.
      *
      * @access public
-     * @static method
+     * @static
      * @param  array    $columns        The columns arrays. 
      * @param  string   [$color]        The text color for the wall row
      * @param  string   [$bgcolor]      The back color for the wall row
