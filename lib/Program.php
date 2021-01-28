@@ -13,8 +13,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @version    1.4.0 
- * @copyright  2017-2020 Kristuff
+ * @version    1.5.0
+ * @copyright  2017-2021 Kristuff
  */
 
 namespace Kristuff\Mishell;
@@ -45,7 +45,7 @@ class Program
      * 
      * @return bool     True if the short or long argument exist in the arguments array, otherwise false
      */
-    protected static function inArguments(array $arguments, string $shortArg, string $longArg)
+    public static function inArguments(array $arguments, string $shortArg, string $longArg)
     {
           return array_key_exists($shortArg, $arguments) || array_key_exists($longArg, $arguments);
     }
@@ -63,14 +63,10 @@ class Program
      * @return string|null   
      * 
      */
-    protected static function getArgumentValue(array $arguments, string $shortArg, string $longArg)
+    public static function getArgumentValue(array $arguments, string $shortArg, string $longArg):? string
     {
-          $val = array_key_exists($shortArg, $arguments) ? $arguments[$shortArg] : 
+          return array_key_exists($shortArg, $arguments) ? $arguments[$shortArg] : 
                  (array_key_exists($longArg, $arguments) ? $arguments[$longArg]  : null);
-          
-          
-          return $val;
-
     }
 
 }

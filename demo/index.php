@@ -24,8 +24,8 @@ function printLoader()
     Console::log('    '. Console::text("  | | | | | | | ___) | | | |  __/ | |   ", 'red'));
     Console::log('    '. Console::text("  |_| |_| |_|_||____/|_| |_|\___|_|_|   ", 'red'));
     Console::log('    '. Console::text("                                        ", 'red'));
-    Console::log('    '. Console::text("                 Version 1.4            ", 'red'));
-    Console::log('    '. Console::text("                 © 2017-2020 Kristuff   ", 'red'));
+    Console::log('    '. Console::text("                 Version 1.5            ", 'red'));
+    Console::log('    '. Console::text("                 © 2017-2021 Kristuff   ", 'red'));
     Console::log('    '. Console::text("                                        ", 'red'));
     Console::log();
     Console::log();
@@ -84,7 +84,7 @@ function printHeader()
     Console::log(Console::text('  Kristuff/Mishell ', 'darkgray') . Console::text(' v1.2 ', 'white', 'green')); 
     Console::log(Console::text('  Made with ', 'darkgray') . Console::text('♥', 'red') . Console::text(' in France', 'darkgray'));
     Console::log(
-        Console::text('  © 2017-2020 Kristuff (', 'darkgray') . 
+        Console::text('  © 2017-2021 Kristuff (', 'darkgray') . 
         Console::text('https://github.com/kristuff)', 'darkgray', 'underlined') .
         Console::text(')', 'darkgray')
     );

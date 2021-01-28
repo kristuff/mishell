@@ -13,8 +13,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @version    1.4.0 
- * @copyright  2017-2020 Kristuff
+ * @version    1.5.0
+ * @copyright  2017-2021 Kristuff
  */
 
 namespace Kristuff\Mishell;
@@ -34,7 +34,7 @@ abstract class ShellPrinter
      * Get whether the current platform is Windows or not.
      *
      * @access protected
-     * @static method
+     * @static
      *
      * @return bool
      */
@@ -47,7 +47,7 @@ abstract class ShellPrinter
      * Get the number of columns in terminal
      *
      * @access public
-     * @static method
+     * @static
      *
      * @return int
      */
@@ -62,7 +62,7 @@ abstract class ShellPrinter
      * Get the number of lines in terminal
      *
      * @access public
-     * @static method
+     * @static
      *
      * @return int
      */
@@ -77,7 +77,7 @@ abstract class ShellPrinter
      * Switch to new window
      *
      * @access public
-     * @static method
+     * @static
      *
      * @return void
      */
@@ -93,7 +93,7 @@ abstract class ShellPrinter
      * Restore primary window
      *
      * @access public
-     * @static method
+     * @static
      *
      * @return void
      */
@@ -108,7 +108,7 @@ abstract class ShellPrinter
      * Hide user input in console
      *
      * @access public
-     * @static method
+     * @static
      *
      * @return void
      */
@@ -123,7 +123,7 @@ abstract class ShellPrinter
      * Restore user input in console
      *
      * @access public
-     * @static method
+     * @static
      *
      * @return void
      */
@@ -138,7 +138,7 @@ abstract class ShellPrinter
      * Clear the console
      *
      * @access public
-     * @static method
+     * @static
      *
      * @return void
      */
