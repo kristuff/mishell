@@ -1,22 +1,19 @@
 <?php
 
-/* 
- *   __  __  _       _            _  _
- *  |  \/  |(_) ___ | |__    ___ | || |
- *  | |\/| || |/ __|| '_ \  / _ \| || |
- *  | |  | || |\__ \| | | ||  __/| || |
- *  |_|  |_||_||___/|_| |_| \___||_||_|
+/** 
+ *        _    _        _ _
+ *  _ __ (_)__| |_  ___| | |
+ * | '  \| (_-< ' \/ -_) | |
+ * |_|_|_|_/__/_||_\___|_|_|
  *
  * This file is part of Kristuff\Mishell.
- * (c) Kristuff <contact@kristuff.fr>
+ * (c) Kr1s7uff For the full copyright and license information, 
+ * please view the LICENSE file that was distributed with this 
+ * source code.
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- *
- * @version    1.5.0
- * @copyright  2017-2021 Kristuff
+ * @version    1.6.2
+ * @copyright  2017-2024 Kr157uff
  */
-
 namespace Kristuff\Mishell;
  
 abstract class ShellTablePrinter extends \Kristuff\Mishell\ShellColoredPrinter

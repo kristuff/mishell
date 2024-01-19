@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ .'/../vendor/autoload.php';
-use Kristuff\Mishell\Console;
+use Kristuff\Mishell\Console;  
 
 // the row header
-$rowHeaders = [ 'Style name' => 15, 'ANSI Code' => 15, 'Sample ouput' => 50 ];
+$rowHeaders = [ 'Style name' => 15, 'ANSI Code' => 15, 'Sample output' => 50 ];
 Console::log('  '.Console::tableRowSeparator($rowHeaders));
 Console::log('  '.Console::tableRow($rowHeaders));
 Console::log('  '.Console::tableRowSeparator($rowHeaders));

@@ -8,7 +8,10 @@
 [![Latest Stable Version](https://poser.pugx.org/kristuff/mishell/v/stable)](https://packagist.org/packages/kristuff/mishell)
 [![License](https://poser.pugx.org/kristuff/mishell/license)](https://packagist.org/packages/kristuff/mishell)
 
-![sample](doc/screenshots/loading.png)
+![sample](doc/screenshots/mishell1.6.png) 
+*See also mp4 in doc/screenshots directory*
+
+
 
 - [Features](#features) 
 - [Requirements](#requirements) 
@@ -33,20 +36,25 @@ Features
 Requirements
 ------------
 - PHP >= 5.6
+- PHP mbstring module
+
 
 Install
 --------
 
 Deploy with your project (in `composer.json`):
 
+
 ```
 {
     ...
     "require": {
-        "kristuff/mishell": ">=1.5-stable"
+        "kristuff/mishell": ">=1.6-stable"
     }
 }
 ```
+
+> Composer is (technically) required to build autoloader files. You should be able to run the demo "as is" (with the `vendor` directory included) when you clone the project. There is no other dependencies.
 
 
 Documentation
@@ -80,15 +88,19 @@ Run the sample
 Bonus
 -----
 You can also do unuseful things like the blue screen of the death^^ Check the demo
-![blue-screen](doc/screenshots/blue-screen.png)
 
+![blue-screen](doc/screenshots/blue-screen.png) 
+
+Update ::1.6
+
+![blue-screen-1.6](doc/screenshots/blue-screen-1.5.9.png)
 
 License
 -------
 
 The MIT License (MIT)
 
-Copyright (c) 2017-2021 Kristuff
+Copyright (c) 2017-2024 Kristuff
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

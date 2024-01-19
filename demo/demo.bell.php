@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ .'/../vendor/autoload.php';
-use Kristuff\Mishell\Console;
+use Kristuff\Mishell\Console;  
 
 Console::log(' '. Console::text('Overview:', 'underlined', 'bold'));
 Console::log('  - Use ' . Console::text("Console::bell()", 'lightblue', 'underlined') . ' to play a bell sound in console (if available).', 'white');
