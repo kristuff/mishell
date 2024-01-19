@@ -8,7 +8,10 @@
 [![Latest Stable Version](https://poser.pugx.org/kristuff/mishell/v/stable)](https://packagist.org/packages/kristuff/mishell)
 [![License](https://poser.pugx.org/kristuff/mishell/license)](https://packagist.org/packages/kristuff/mishell)
 
--   480 ![sample](doc/screenshots/helloworld-480.mp4)
+![sample](doc/screenshots/mishell1.6.png) 
+*See also mp4 in doc/screenshots directory*
+
+
 
 - [Features](#features) 
 - [Requirements](#requirements) 
