@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ .'/../vendor/autoload.php';
-use Kristuff\Mishell\Console;
+use Kristuff\Mishell\Console;  
 
 Console::log(' '. Console::text('Overview:', 'underlined', 'bold'));
 Console::log("  - Use " . Console::text("int|bool ", 'blue') . Console::text("Console::askInt()", 'lightblue', 'underlined') . " to ask user to enter a number in the console.");

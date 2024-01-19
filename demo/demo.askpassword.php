@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ .'/../vendor/autoload.php';
-use Kristuff\Mishell\Console;
+use Kristuff\Mishell\Console;  
 
 Console::log(' '. Console::text('Overview:', 'underlined', 'bold'));
 Console::log('  Use ' .   Console::text("string ", 'blue'). Console::text("Console::askPassword()", 'lightblue', 'underlined') . " to ask user to enter a value and return this value.", 'white');

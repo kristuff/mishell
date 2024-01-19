@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ .'/../vendor/autoload.php';
-use Kristuff\Mishell\Console;
+use Kristuff\Mishell\Console;  
 
 // headers
 $rowHeaders = ['#Num' => 7, 'Color name' => 15, ' ANSI Code'  => 15, ' Sample output' => 50];

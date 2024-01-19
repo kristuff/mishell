@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ .'/../vendor/autoload.php';
-use Kristuff\Mishell\Console;
+use Kristuff\Mishell\Console;  
 
 // temporary message 
 Console::log(' I am a temporary message... I will be erased :(', 'red');

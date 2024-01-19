@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ .'/../vendor/autoload.php';
-use Kristuff\Mishell\Console;
+use Kristuff\Mishell\Console;  
 
 declare(ticks = 1);                                      // Allow posix signal handling
 pcntl_async_signals(true);

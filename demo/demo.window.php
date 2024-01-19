@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ .'/../vendor/autoload.php';
-use Kristuff\Mishell\Console;
+use Kristuff\Mishell\Console;  
 
 Console::log(' Let say we are current window.');
 Console::log(' We will open a new window using ' . Console::text('Console::newWindow()', 'lightblue', 'underlined') . ' method.');

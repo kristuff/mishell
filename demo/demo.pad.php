@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ .'/../vendor/autoload.php';
-use Kristuff\Mishell\Console;
+use Kristuff\Mishell\Console;  
 
 Console::log(' '. Console::text('Overview:', 'underlined', 'bold'));
 Console::log("  - Use " . Console::text("string ", 'blue'). Console::text("Console::pad()", 'lightblue', 'underlined') . "to get a text with given padding.");
