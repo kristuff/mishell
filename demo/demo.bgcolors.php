@@ -2,7 +2,7 @@
 require_once __DIR__ .'/../vendor/autoload.php';
 use Kristuff\Mishell\Console;
 
-$rowHeaders = ['Color name' => 15, ' ANSI Code'  => 15, ' Sample ouput' => 51];
+$rowHeaders = ['Color name' => 15, ' ANSI Code'  => 15, ' Sample output' => 51];
 Console::log('  '.Console::tableRowSeparator($rowHeaders));
 Console::log('  '.Console::tableRow($rowHeaders));
 Console::log('  '.Console::tableRowSeparator($rowHeaders));

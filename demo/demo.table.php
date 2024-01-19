@@ -119,10 +119,10 @@ Console::log(Console::tableRowSeparator($rowHeaders, 'drakgray')); // saparator 
 // tables rows
 foreach ($rows as $row){
     Console::log(
-        Console::TableRowStart().           // start row with separator. Then, each cell will end with a separator 
-        Console::TableRowCell($row[0] , 10).   // keep align right left
+        Console::TableRowStart().               // start row with separator. Then, each cell will end with a separator 
+        Console::TableRowCell($row[0] , 10).    // keep left alignment 
         Console::TableRowCell($row[1] , 12, Console::ALIGN_CENTER).  // align center
-        Console::TableRowCell($row[2] , 25)  // keep align right left
+        Console::TableRowCell($row[2] , 25)     // keep left alignment
     );
 }
 // table end

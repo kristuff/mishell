@@ -2,12 +2,13 @@
 require_once __DIR__ .'/../vendor/autoload.php';
 use Kristuff\Mishell\Console;
 
+Console::log();
 Console::log(' '. Console::text('Overview:', 'underlined', 'bold'));
-Console::log("  - Use " . Console::text("Console::relog()", 'lightblue', 'underlined') . " to overwrite the current line.", 'white');
+Console::log("  - Use " . Console::text("Console::relog()", 'lightblue', 'underlined') . " to write temporary output to be overwritten later.", 'white');
 Console::log();
 
 Console::log(' '. Console::text('Tips:', 'underlined', 'bold'));
-Console::log("   - you may need to use " . Console::text("php str_pad()", 'lightblue', 'underlined') . " method to be sure all previous text is overwitted.");
+Console::log("   - you may need to use " . Console::text("php str_pad()", 'lightblue', 'underlined') . " method to be sure all previous text is overwritten.");
 Console::log("   - You can customize colors (foreground and background) and some styles in same way than ");
 Console::log('     with ' . Console::text("Console::text()", 'lightblue', 'underlined') . 
                  ' and ' .  Console::text("Console::log()", 'lightblue', 'underlined'). ' methods.');
@@ -52,7 +53,7 @@ for ($i=0 ; $i<=100 ; $i++) {
 // Overwrite progress message. 
 // note: we can customize colors and some styles like with Console::text() and 
 // Console::log() methods.
-Console::relog(' -- wOopssssssss!!  something was wrong?!%?!!?   Wait a momemt.... --', 'red', 'yellow');  
+Console::relog(' -- wOopssssssss!!  something was wrong?!%?!!?   Wait a moment.... --', 'red', 'yellow');  
 
 // wait for a while, so we see the animation
 usleep(2000000); 

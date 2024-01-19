@@ -1,20 +1,18 @@
 <?php
 
-/* 
- *   __  __  _       _            _  _
- *  |  \/  |(_) ___ | |__    ___ | || |
- *  | |\/| || |/ __|| '_ \  / _ \| || |
- *  | |  | || |\__ \| | | ||  __/| || |
- *  |_|  |_||_||___/|_| |_| \___||_||_|
+/** 
+ *        _    _        _ _
+ *  _ __ (_)__| |_  ___| | |
+ * | '  \| (_-< ' \/ -_) | |
+ * |_|_|_|_/__/_||_\___|_|_|
  *
  * This file is part of Kristuff\Mishell.
- * (c) Kristuff <contact@kristuff.fr>
+ * (c) Kr1s7uff For the full copyright and license information, 
+ * please view the LICENSE file that was distributed with this 
+ * source code.
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- *
- * @version    1.5.0
- * @copyright  2017-2021 Kristuff
+ * @version    1.6.2
+ * @copyright  2017-2024 Kr157uff
  */
 
 namespace Kristuff\Mishell;
@@ -89,9 +87,6 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
         'underlined'   => '4',    
         'blink'        => '5', 
         'reverse'      => '7',    // reverse foreground/background color
-
-        //formats=(["bold"]=1 ["bright"]=1 ["dim"]=2 ["underlined"]=4 ["blink"]=5 ["reverse"]=7 ["hidden"]=8)
-        //resets=(["all"]=0 ["bold"]=21 ["bright"]=21 ["dim"]=22 ["underlined"]=24 ["blink"]=25 ["reverse"]=27 ["hidden"]=28)
     );
     
     /**
@@ -116,14 +111,14 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
      *
      * @access protected
      * @static
-     * @param  string   $command                The command name string
-     * @param  string   $args                   The command arguments
+     * @param string   $command                The command name string
+     * @param array    $args                   The command arguments
      *
      * @return mixed|void
      */
     protected static function cmd($command, array $args)
     {
-        // ouptut string is always the first argument (in any)
+        // ouptut string is always the first argument (if any)
         $str = !empty($args) ? $args[0] : '';
 
         // others (if any) are options
@@ -146,11 +141,24 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
             case'print':
                 echo (self::getCliString($str, $args));               // print text
                 break;
+
             case'log':
                 echo (self::getCliString($str, $args) . self::$EOF );   // print text + newline
                 break;
+
             case'relog':
-                echo (self::getCliString($str ."\r", $args));         // overwrite current line 
+                // overwrite last line (cursor stays at the beginning)
+                echo (self::getCliString($str ."\r", $args));   
+                break;
+
+            case'overwrite':
+                // Overwrite last x printed line (add trailing new lines)
+                // text could be one line string, or array of lines
+                $text           = is_array($str) ? implode(PHP_EOL, $str) : $str;
+                $overwriteIndex = is_array($str) ? count($str) :  1;
+                // https://stackoverflow.com/questions/11283625/overwrite-last-line-on-terminal
+                echo ("\033[". $overwriteIndex ."A\033[K".self::getCliString($text, $args).self::$EOF);  
+
                 break;
 
             // *****************************************
@@ -177,14 +185,36 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
         // nothing found
         return null;
     }
-      
+    
+
+
+
+    
+    public static function progressBar(
+        $percent, 
+        $color, 
+        $bgcolor, 
+        $background = 'darkgray', 
+        $progressLenght = 40, 
+        $pendingSign =  ' ', 
+        $progressSign =  ' ', 
+        $withPurcent = true
+    ){
+        $perc  = min(100,$percent);
+        $start = round($progressLenght * $perc / 100);
+
+        return  ($withPurcent ? Console::text(Console::pad($perc . '% ', 5, ' ', STR_PAD_LEFT),  $color) : '').
+                Console::text(Console::pad('', $start, $progressSign),  'white', $bgcolor) .
+                Console::text(Console::pad('', $progressLenght - $start, $pendingSign), 'black', $background) ;
+    }
+
     /**
      * Get a formatted cli string to output in the console
      *
      * @access protected
      * @static
-     * @param  string   $str                    The text to output
-     * @param  string   $arguments              The command arguments
+     * @param string   $str                    The text to output
+     * @param string   $arguments              The command arguments
      *
      * @return mixed|void
      */
@@ -226,14 +256,14 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
     }
 
     /**
-     * Get a formatted string to be returned in console.
+     * Get a formatted string to be returned in terminal.
      *
      * @access public
      * @static
-     * @param  string   [$str]                  The string to output
-     * @param  string   [$color]                The text color for the wall line
-     * @param  string   [$bgcolor]              The back color for the wall line
-     * @param  string   [$option]+...           The text styles for the wall line
+     * @param string   [$str]                  The string to output
+     * @param string   [$color]                The text color for the wall line
+     * @param string   [$bgcolor]              The back color for the wall line
+     * @param string   [$option]+...           The text styles for the wall line
      *
      * @return string
      */
@@ -243,20 +273,20 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
     }
 
     /**
-     * Print a formatted string in console.
+     * Print a formatted string in terminal.
      *
      * @access public
      * @static
-     * @param  string   [$str]                  The string to print
-     * @param  string   [$color]                The text color for the wall line
-     * @param  string   [$bgcolor]              The back color for the wall line
-     * @param  string   [$option]+...           The text styles for the wall line
+     * @param string   [$str]                  The string to print
+     * @param string   [$color]                The text color for the wall line
+     * @param string   [$bgcolor]              The back color for the wall line
+     * @param string   [$option]+...           The text styles for the wall line
      *
      * @return void
      */
     public static function print()
     {
-        return self::cmd('write', func_get_args());
+        return self::cmd('print', func_get_args());
     }
 
     /**
@@ -264,10 +294,10 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
      *
      * @access public
      * @static
-     * @param  string   [$str]                  The string to print
-     * @param  string   [$color]                The text color for the wall line
-     * @param  string   [$bgcolor]              The back color for the wall line
-     * @param  string   [$option]+...           The text styles for the wall line
+     * @param string   [$str]                  The string to print
+     * @param string   [$color]                The text color for the wall line
+     * @param string   [$bgcolor]              The back color for the wall line
+     * @param string   [$option]+...           The text styles for the wall line
      *
      * @return string|null
      */
@@ -281,10 +311,10 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
      *
      * @access public
      * @static
-     * @param  string   [$str]                  The string to print
-     * @param  string   [$color]                The text color for the wall line
-     * @param  string   [$bgcolor]              The back color for the wall line
-     * @param  string   [$option]+...           The text styles for the wall line
+     * @param string   [$str]                  The string to print
+     * @param string   [$color]                The text color for the wall line
+     * @param string   [$bgcolor]              The back color for the wall line
+     * @param string   [$option]+...           The text styles for the wall line
      *
      * @return int|bool 
      */
@@ -296,10 +326,10 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
     /**
      * Prints a formatted string in the console then waits for a user input (returns but does not displays that user's input).
      *
-     * @param  string   [$str]                  The string to print
-     * @param  string   [$color]                The text color for the wall line
-     * @param  string   [$bgcolor]              The back color for the wall line
-     * @param  string   [$option]+...           The text styles for the wall line
+     * @param string   [$str]                  The string to print
+     * @param string   [$color]                The text color for the wall line
+     * @param string   [$bgcolor]              The back color for the wall line
+     * @param string   [$option]+...           The text styles for the wall line
      *
      * @return string|null
      */
@@ -313,10 +343,10 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
      *
      * @access public
      * @static
-     * @param  string   [$str]                  The string to print
-     * @param  string   [$color]                The text color for the wall line
-     * @param  string   [$bgcolor]              The back color for the wall line
-     * @param  string   [$option]+...           The text styles for the wall line
+     * @param string   [$str]                  The string to print
+     * @param string   [$color]                The text color for the wall line
+     * @param string   [$bgcolor]              The back color for the wall line
+     * @param string   [$option]+...           The text styles for the wall line
      *
      * @return void
      */
@@ -326,14 +356,14 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
     }
 
     /**
-     * Overwrite the current line in console.
+     * Overwrite the current line in terminal. (cursor stays at the beginning)
      *
      * @access public
      * @static
-     * @param  string   [$str]                  The string to print
-     * @param  string   [$color]                The text color for the wall line
-     * @param  string   [$bgcolor]              The back color for the wall line
-     * @param  string   [$option]+...           The text styles for the wall line
+     * @param string   [$str]                  The string to print
+     * @param string   [$color]                The text color for the wall line
+     * @param string   [$bgcolor]              The back color for the wall line
+     * @param string   [$option]+...           The text styles for the wall line
      *
      * @return void
      */
@@ -341,16 +371,33 @@ abstract class ShellColoredPrinter extends \Kristuff\Mishell\ShellPrinter
     {
         self::cmd('relog',func_get_args());
     }  
-       
+
+    /**
+     * Overwrite the current line in terminal.
+     *
+     * @access public
+     * @static
+     * @param string|array   [$str]            The string to print|array of lines
+     * @param string   [$color]                The text color for the wall line
+     * @param string   [$bgcolor]              The back color for the wall line
+     * @param string   [$option]+...           The text styles for the wall line
+     *
+     * @return void
+     */
+    public static function overwrite()
+    {
+        self::cmd('overwrite',func_get_args());
+    }  
+    
     /**
      * A cli version of str_pad() that takes care of not printable ANSI chars
      *
      * @access protected
      * @static
-     * @param  string   $input                  The input text
-     * @param  int      $padLenght              The pad length. Default is 0 (no pad)
-     * @param  string   $padString              The pad string. Default is blank char.
-     * @param  int      $padType                The pad type (STR_PAD_LEFT, STR_PAD_RIGHT or STR_PAD_BOTH). Default is STR_PAD_RIGHT.
+     * @param string   $input                  The input text
+     * @param int      $padLenght              The pad length. Default is 0 (no pad)
+     * @param string   $padString              The pad string. Default is blank char.
+     * @param int      $padType                The pad type (STR_PAD_LEFT, STR_PAD_RIGHT or STR_PAD_BOTH). Default is STR_PAD_RIGHT.
      *
      * @return mixed|void
      */    

@@ -1,7 +1,7 @@
 {
     "name": "kristuff/mishell",
     "description": "A mini PHP library to build beautiful CLI apps and reports",
-    "homepage": "https://kristuff.fr/projects/mishell",
+    "homepage": "https://github.com/kristuff/mishell",
     "keywords": ["cli", "table", "color"],
     "type": "library",
     "license": "MIT",
